@@ -11,4 +11,9 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     {
 
     }
+
+    protected void btnYes_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffDataEntry.aspx");
+    }
 }
