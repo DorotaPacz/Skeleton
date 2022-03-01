@@ -16,4 +16,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         Response.Redirect("StaffConfirmDelete.aspx");
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffList.aspx"); 
+    }
+
+    protected void btnDisplayAll_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffViewer.aspx");
+    }
+
+    protected void btnDisplay_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffViewer.aspx");
+    }
 }

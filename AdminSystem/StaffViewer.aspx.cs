@@ -11,4 +11,14 @@ public partial class _1Viewer : System.Web.UI.Page
     {
 
     }
+
+    protected void btnMain_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffDataEntry.aspx");
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffList.aspx");
+    }
 }
