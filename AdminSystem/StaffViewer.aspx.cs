@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,16 +10,12 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //create a new instance of clsStaff
+        clsStaff AStaff = new clsStaff();
+        //get data from session object
+        AStaff = (clsStaff)Session["AStaff"];
+        //display the name of the staff
+        Response.Write(AStaff.StaffName);
     }
 
-    protected void btnMain_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("StaffDataEntry.aspx");
-    }
-
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("StaffList.aspx");
-    }
 }
