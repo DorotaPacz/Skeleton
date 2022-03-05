@@ -14,8 +14,17 @@ public partial class _1Viewer : System.Web.UI.Page
         clsStaff AStaff = new clsStaff();
         //get data from session object
         AStaff = (clsStaff)Session["AStaff"];
+        //display the ID number of the staff
+        Response.Write(AStaff.IdNoOK + "<br/>");
         //display the name of the staff
-        Response.Write(AStaff.StaffName);
+        Response.Write(AStaff.StaffName + "<br/>");
+        //display the registration date of the staff
+        Response.Write(AStaff.DateBegin + "<br/>");
+        //display the salary of the staff
+        Response.Write(AStaff.Salary + "<br/>");
+        //Confirm that the staff is Admin
+        Response.Write(AStaff.IsAdmin);
     }
+
 
 }
