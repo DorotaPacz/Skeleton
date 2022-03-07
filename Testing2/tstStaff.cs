@@ -8,12 +8,21 @@ namespace Testing
     public class tstStaff
     {
         [TestMethod]
+        public void InstanceDBOK()
+        {
+            //create an instance of the class we want to create
+            clsDataConnection ADataConnection = new clsDataConnection();
+            Assert.IsNotNull(ADataConnection); //ADataConnection object should not be null.
+        }
+
+        [TestMethod]
         public void InstanceOK()
         {
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
             Assert.IsNotNull(AStaff); //AStaff object should not be null.
         }
+
         [TestMethod]
         public void StaffNameOK()
         {
@@ -24,7 +33,7 @@ namespace Testing
             //assign the data to the property
             AStaff.StaffName = TestData; //description assign to test data 
             //test to see that the two values are the same
-            Assert.AreEqual(AStaff.StaffName, TestData); 
+            Assert.AreEqual(AStaff.StaffName, TestData);
         }
 
         [TestMethod]
@@ -179,26 +188,7 @@ namespace Testing
             //test to see if result is true
             Assert.IsTrue(OK);
         }
-        [TestMethod]
-        public void TestIsAdminFound()
-        {
-            //create an instance of the class we want to create
-            clsStaff AStaff = new clsStaff();
-            //create boolean variable to store the results of the validation
-            Boolean Found = false;
-            //create boolean variable to record if data is ok (assume it is)
-            Boolean OK = true;
-            //create test data to use with the method
-            Int32 StaffIdNo = 10;
-            //invoke the method
-            Found = AStaff.Find(StaffIdNo);
-            // check the date property
-            if (AStaff.IsAdmin != true)
-            {
-                OK = false;
-            }
-            //test to see if result is true
-            Assert.IsTrue(OK);
-        }
+
     }
 }
+
