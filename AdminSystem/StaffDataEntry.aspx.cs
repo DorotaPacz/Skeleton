@@ -19,13 +19,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create new instance
         clsStaff AStaff = new clsStaff();
         //capture the Id  
-        AStaff.IdNoOK = Convert.ToInt32(txtIdNo.Text);
+        AStaff.IdNoOK = Convert.ToInt32(txtStaffIdNo.Text);
         //capture the name
-        AStaff.StaffName = txtName.Text;
+        AStaff.StaffName = txtStaffName.Text;
         //capture the registration date
-        AStaff.DateBegin = Convert.ToDateTime(txtStartDate.Text);
+        AStaff.DateBegin = Convert.ToDateTime(txtStaffStartDate.Text);
         //capture the salary
-        AStaff.Salary = Convert.ToDouble(txtSalary.Text);
+        AStaff.Salary = Convert.ToDouble(txtStaffSalary.Text);
         //capture the admin confirmation 
         AStaff.IsAdmin = chkIsAdmin.Checked;
 
@@ -35,6 +35,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("StaffViewer.aspx");
     }
 
-    
 
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the staff class
+        clsStaff AStaff = new clsStaff();
+        //variable to store the Primary key
+        Int32 StaffIdNo;
+        //variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        StaffIdNo = Convert.ToInt32(txtStaffIdNo.Text);
+        //find the record
+        Found = AStaff.Find(StaffIdNo);
+        //if found 
+        if(Found ==true)
+        {
+            //display the values of the properties in the form
+            txtStaffName.Text = AStaff.StaffName;
+            txtStaffStartDate.Text = AStaff.DateBegin.ToString();
+            txtStaffSalary.Text = AStaff.Salary.ToString();
+            chkIsAdmin.Text = AStaff.IsAdmin.ToString();
+        }
+    }
 }
