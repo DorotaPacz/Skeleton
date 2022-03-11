@@ -18,19 +18,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsCustomer Customer = new clsCustomer();
 
+        Customer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
         Customer.CustomerName = txtCustomerName.Text;
-      
+        Customer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
+        Customer.StudnetDisscountPercentage = Convert.ToDouble(txtStudentDiscountPercentage.Text);
+        Customer.IsStudent = Convert.ToBoolean(chkIsStudnet.Checked);
         Session["Customer"] = Customer;
 
-      //  Customer.CustomerDOB = txtCustomerDOB.Text;
-
-       // Session["Customer"] = Customer;
-
-        //Customer.CustomerID = txtCustomerID.Text;
-
-       //Session["Customer"] = Customer;
-
-        
          //navigate to the viewer page
         Response.Redirect("CustomersViewer.aspx");
 

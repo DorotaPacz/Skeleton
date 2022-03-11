@@ -28,6 +28,7 @@ namespace Testing1
             Assert.AreEqual(Customer.IsStudent, TestData);
 
         }
+        [TestMethod]
         public void CustomerNamePropertyOK()
         {
             //To create an instance of the class 
@@ -37,6 +38,7 @@ namespace Testing1
             Assert.AreEqual(Customer.CustomerName, TestData);
 
         }
+        [TestMethod]
         public void StudnetDisscountPercentageOK()
         {
             //To create an instance of the class 
@@ -46,6 +48,7 @@ namespace Testing1
             Assert.AreEqual(Customer.StudnetDisscountPercentage, TestData);
 
         }
+        [TestMethod]
         public void CustomerDOBOK()
         {
             //To create an instance of the class 
@@ -55,6 +58,7 @@ namespace Testing1
             Assert.AreEqual(Customer.CustomerDOB, TestData);
 
         }
+        [TestMethod]
         public void CustomerIDOK()
         {
             //To create an instance of the class 
@@ -65,6 +69,41 @@ namespace Testing1
             Assert.AreEqual(Customer.CustomerID, TestData);
 
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+
+            Int32 CustomerID = 21;
+
+            Found = Customer.Find(CustomerID);
+
+            Assert.IsTrue(Found);
+
+        }
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerID = 21;
+
+            Found = Customer.Find(CustomerID);
+
+            if (Customer.CustomerID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+
+        }
+
 
 
 
