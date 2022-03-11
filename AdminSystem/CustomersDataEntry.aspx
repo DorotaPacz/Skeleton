@@ -13,16 +13,16 @@
             <asp:TextBox ID="txtStudentDiscountPercentage" runat="server"></asp:TextBox>
         </div>
         <p>
-            <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name"></asp:Label>
+            <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name" width="174px"></asp:Label>
             <asp:TextBox ID="txtCustomerName" runat="server"></asp:TextBox>
         </p>
-        <asp:Label ID="lblCustomerDOB" runat="server" Text="Customer DOB"></asp:Label>
+        <asp:Label ID="lblCustomerDOB" runat="server" Text="Customer DOB" width="174px"></asp:Label>
         <asp:TextBox ID="txtCustomerDOB" runat="server"></asp:TextBox>
         <p>
-            <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID"></asp:Label>
+            <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="174px"></asp:Label>
             <asp:TextBox ID="txtCustomerID" runat="server" OnTextChanged="txtCustomerID_TextChanged"></asp:TextBox>
         </p>
-        <asp:CheckBox ID="chkIsStudnet" runat="server" Text="Studnet" />
+        <asp:CheckBox ID="chkIsStudnet" runat="server" Text="Studnet" width="174px" />
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
