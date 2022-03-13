@@ -75,7 +75,7 @@ namespace Testing1
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
 
             Found = Customer.Find(CustomerID);
 
@@ -103,6 +103,91 @@ namespace Testing1
 
 
         }
+        [TestMethod]
+        public void TestCustomerNameFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerID = 21;
+
+            Found = Customer.Find(CustomerID);
+
+            if (Customer.CustomerName != "Test Customer Name")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+
+        }
+        [TestMethod]
+        public void TestStudentDiscountPercentageFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerID = 21;
+
+            Found = Customer.Find(CustomerID);
+
+            if (Customer.StudnetDisscountPercentage != Convert.ToDouble("1.5"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+
+        }
+        [TestMethod]
+        public void TestCustomerDOBFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerID = 21;
+
+            Found = Customer.Find(CustomerID);
+
+            if (Customer.CustomerDOB != Convert.ToDateTime("15/09/2000")) 
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+
+        }
+        [TestMethod]
+        public void TestIsStudentFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 CustomerID = 21;
+
+            Found = Customer.Find(CustomerID);
+
+            if (Customer.IsStudent != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+
+        }
+
 
 
 
