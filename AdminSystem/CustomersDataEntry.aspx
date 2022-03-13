@@ -20,7 +20,7 @@
         <asp:TextBox ID="txtCustomerDOB" runat="server"></asp:TextBox>
         <p>
             <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="174px"></asp:Label>
-            <asp:TextBox ID="txtCustomerID" runat="server" OnTextChanged="txtCustomerID_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
         </p>
         <asp:CheckBox ID="chkIsStudnet" runat="server" Text="Studnet" width="174px" />
         <p>
