@@ -7,10 +7,27 @@
     <title></title>
 </head>
 <body>
-    This is the order entry page
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <asp:Label ID="lblOrderID" runat="server" Text="Order ID"></asp:Label>
+        <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
+        <br />
+        <br />
+
+        <asp:Label ID="lblTotalPrice" runat="server" Text="Total Price" width="57px"></asp:Label>
+        <asp:TextBox ID="txtTotalPrice" runat="server"></asp:TextBox>
+        <br />
+        <br />
+
+        <asp:CheckBox ID="chkFulfilled" runat="server" Text="is fulfilled?" />
+        <br />
+        <br />
+
+        <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
+        <p>
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        </p>
+
     </form>
 </body>
 </html>
