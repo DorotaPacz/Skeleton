@@ -15,5 +15,69 @@ namespace Testing4
             // test to see that it exists
             Assert.IsNotNull(anOrder);
         }
+
+        [TestMethod]
+        public void IsFulfilledPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder anOrder = new clsOrder();
+
+            //create some test data
+            Boolean TestData = true;
+
+            //assign data to the property
+            anOrder.IsFulfilled = TestData;
+
+            // test to see that the two values are the same
+            Assert.AreEqual(anOrder.IsFulfilled, TestData);
+        }
+
+        [TestMethod]
+        public void DateOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder anOrder = new clsOrder();
+
+            //create some test data
+            DateTime TestData = DateTime.Now.Date;
+
+            //assign data to the property
+            anOrder.Date = TestData;
+
+            // test to see that the two values are the same
+            Assert.AreEqual(anOrder.Date, TestData);
+        }
+
+        [TestMethod]
+        public void TotalPriceOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder anOrder = new clsOrder();
+
+            //create some test data
+            Double TestData = 1.99D;
+
+            //assign data to the property
+            anOrder.TotalPrice = TestData;
+
+            // test to see that the two values are the same
+            Assert.AreEqual(anOrder.TotalPrice, TestData);
+        }
+
+        [TestMethod]
+        public void IDOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder anOrder = new clsOrder();
+
+            //create some test data
+            int TestData = 1;
+
+            //assign data to the property
+            anOrder.ID = TestData;
+
+            // test to see that the two values are the same
+            Assert.AreEqual(anOrder.ID, TestData);
+        }
     }
 }
