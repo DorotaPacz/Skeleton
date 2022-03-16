@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <asp:Label ID="lblOrderID" runat="server" Text="Order ID"></asp:Label>
         <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
+        <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click" Text="Find" />
         <br />
         <br />
 
