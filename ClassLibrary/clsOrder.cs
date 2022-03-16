@@ -66,18 +66,35 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int iD)
+        public bool Find(int ID)
         {
-            //set the private data members to the test data value
-            //subject to change later 
-            //this is just hardcoding values
-            privateID = 1;
-            privateDate = Convert.ToDateTime("16/03/2022");
-            privateIsFulfilled = false;
-            privateTotalPrice = 1.99;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
 
-            //always return true
-            return true;
+            //add the parameter for the ID to search for
+            DB.AddParameter("@ID", ID);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByID");
+
+            //if one record is found (there should be either one or zero!)
+            if(DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                privateID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                privateDate = Convert.ToDateTime(DB.DataTable.Rows[0]["Date"]);
+                privateIsFulfilled = Convert.ToBoolean(DB.DataTable.Rows[0]["isFulfilled"]);
+                privateTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["TotalPrice"]);
+                //return that everything worked OK
+                return true;
+                
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+            }
         }
     }
 }
