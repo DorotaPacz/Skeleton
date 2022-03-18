@@ -158,7 +158,7 @@ namespace Testing4
             Found = anOrderLine.Find(StockItemNo);
 
             //check the address no
-            if (anOrderLine.Quantity != 1)
+            if (anOrderLine.Quantity != 15)
             {
                 OK = false;
             }
