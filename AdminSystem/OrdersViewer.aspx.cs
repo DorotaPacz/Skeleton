@@ -10,17 +10,27 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //create new instance of Order
+        //create new instance of Order & OrderLine
         clsOrder anOrder = new clsOrder();
+        clsOrderLine anOrderLine = new clsOrderLine();
 
         //get the data from the session object
         anOrder = (clsOrder) Session["OrderID"];
-        anOrder = (clsOrder) Session["TotalPrice"];
+        anOrderLine = (clsOrderLine) Session["Orderline"];
 
         //display the house number for this entry
      
+        //Write order
         Response.Write(anOrder.ID);
+        Response.Write(anOrder.Date);
         Response.Write(anOrder.TotalPrice);
         Response.Write(anOrder.IsFulfilled);
+
+        //Write Orderline
+        Response.Write(anOrderLine.StockItemNo);
+        Response.Write(anOrderLine.OrderID);
+        Response.Write(anOrderLine.Quantity);
+
+
     }
 }

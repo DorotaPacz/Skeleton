@@ -17,20 +17,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create new instance of clsOrder
         clsOrder anOrder = new clsOrder();
+        clsOrderLine anOrderline = new clsOrderLine();
 
-        // capture the ID
-        // ID & Total price are of type int and we get string from input so we have to convert it
-        int parsedID = Int32.Parse(txtOrderID.Text);
-        int parsedTotalPrice = Int32.Parse(txtTotalPrice.Text);
+        // capture the properties from Order form and assign them to Order object
+        int parsedID = Convert.ToInt32(txtOrderID.Text);
+        double parsedTotalPrice = Convert.ToDouble(txtTotalPrice.Text);
+        DateTime parsedDateTime = Convert.ToDateTime(txtDate.Text);
 
         anOrder.ID = parsedID;
+        anOrder.Date = parsedDateTime;
         anOrder.TotalPrice = parsedTotalPrice;
         anOrder.IsFulfilled = chkFulfilled.Checked;
 
+        // capture the properties from OrderLine form and assign them to Order object
+        int parsedStockItemNo = Convert.ToInt32(txtStockItemNo.Text);
+        int parsedOrderIDagain = Convert.ToInt32(txtOrderIDagain.Text);
+        int parsedQuantity = Convert.ToInt32(txtQuantity.Text);
+
+        anOrderline.StockItemNo = parsedStockItemNo;
+        anOrderline.OrderID = parsedOrderIDagain;
+        anOrderline.Quantity = parsedQuantity;
+
         //store the ID in the session object
         Session["OrderID"] = anOrder;
-        Session["TotalPrice"] = anOrder;
-        Session["isFulfilled"] = anOrder;
+        Session["Orderline"] = anOrderline;
 
         // navigate to the viewer page
         Response.Redirect("OrdersViewer.aspx");
@@ -62,5 +72,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtTotalPrice.Text = Convert.ToString(anOrder.TotalPrice);
 
         }
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+
     }
 }
