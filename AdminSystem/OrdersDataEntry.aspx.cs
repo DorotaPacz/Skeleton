@@ -47,7 +47,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
 
-
+    // FIND ORDER
     protected void Button1_Click(object sender, EventArgs e)
     {
         //create an instance of the Order class
@@ -70,12 +70,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //display the values of the properties in the form
             txtOrderID.Text = Convert.ToString(anOrder.ID);
             txtTotalPrice.Text = Convert.ToString(anOrder.TotalPrice);
-
+            txtDate.Text = Convert.ToString(anOrder.Date);
+            chkFulfilled.Checked = anOrder.IsFulfilled;
         }
     }
 
+    //FIND ORDERLINE
     protected void Button2_Click(object sender, EventArgs e)
     {
+        //create an instance of orderline 
+        clsOrderLine anOrderLine = new clsOrderLine();
+
+        //variable to store the primary key
+        Int32 StockItemNo;
+
+        //variable to store the result of the find operation
+        Boolean Found = false;
+
+        //get primary key entered by the user
+        StockItemNo = Convert.ToInt32(txtStockItemNo.Text);
+
+        //find the recort
+        Found = anOrderLine.Find(StockItemNo);
+        
+        //if found
+        if (Found == true )
+        {
+            //display values of the properties in the form
+            txtStockItemNo.Text = Convert.ToString(anOrderLine.StockItemNo);
+            txtOrderIDagain.Text = Convert.ToString(anOrderLine.OrderID);
+            txtQuantity.Text = Convert.ToString(anOrderLine.Quantity);
+        }
 
     }
 }
