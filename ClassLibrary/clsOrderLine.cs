@@ -85,5 +85,34 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string testOrderID, string testQuantity)
+        {
+
+            String Error = "";
+
+            Int32 testOrderIDTemp;
+            Int32 testQuantityTemp;
+
+            try
+            {
+                testQuantityTemp = Convert.ToInt32(testQuantity);
+                if(testQuantityTemp < 0)
+                {
+                    Error = Error + "Quantity cannot be negative";
+                }
+
+                if(testQuantityTemp == 0)
+                {
+                    Error = Error + "Quantity cannot be zero";
+                }
+            }
+            catch
+            {
+                Error = Error + "Quantity was invalid data type";
+            }
+
+            return Error;
+        }
     }
 }

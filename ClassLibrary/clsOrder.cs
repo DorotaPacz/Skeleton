@@ -96,5 +96,61 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string testDate, string testTotalPrice)
+        {
+            //create a string variable to store the error
+            String Error = "";
+
+            //create temporary variable to store date values
+            DateTime DateTemp;
+            Double TotalPriceTemp;
+
+            //********* TOTAL PRICE VALIDATION ****************
+            //if the TotalPrice is blank
+            if (testTotalPrice.Length == 0)
+            {
+                //record the error
+                Error = Error + "The totalPrice cannot be blank";
+            }
+
+            //if TotalPrice is less than 0
+            try
+            {
+                TotalPriceTemp = Convert.ToDouble(testTotalPrice);
+                if (TotalPriceTemp < 0)
+                {
+                    Error = Error + "The totalPrice cannot be smaller than 0";
+                }
+
+            }
+            catch
+            {
+                Error = Error + "The totalPrice was not a valid data type";
+            }
+
+            //************* DATE VALIDATION ****************
+            try
+            { 
+                DateTemp = Convert.ToDateTime(testDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date ";
+            }
+
+            //return any error messages
+            return Error;
+        }
     }
 }

@@ -7,6 +7,13 @@ namespace Testing4
     [TestClass]
     public class tstOrderLine
     {
+
+        //create some test data
+        string testQuantity = "15";
+        string testOrderID = "1";
+
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -165,6 +172,78 @@ namespace Testing4
 
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class 
+            clsOrderLine anOrderLine = new clsOrderLine();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //invoke the method
+            Error = anOrderLine.Valid(testOrderID, testQuantity);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinLessOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+
+            String Error = "";
+
+            string Quantity = "-1"; //this should trigger an error
+
+            Error = anOrderLine.Valid(testOrderID, Quantity);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMin()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+
+            String Error = "";
+
+            string Quantity = "0"; //this should trigger an error
+
+            Error = anOrderLine.Valid(testOrderID, Quantity);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+
+            String Error = "";
+
+            string Quantity = "1"; //this should be OK
+
+            Error = anOrderLine.Valid(testOrderID, Quantity);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityInvalidDataType()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+
+            String Error = "";
+
+            string Quantity = "abcd"; //this should trigger an error
+
+            Error = anOrderLine.Valid(testOrderID, Quantity);
+
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
