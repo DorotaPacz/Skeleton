@@ -86,12 +86,11 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string testOrderID, string testQuantity)
+        public string Valid(string testQuantity)
         {
 
             String Error = "";
 
-            Int32 testOrderIDTemp;
             Int32 testQuantityTemp;
 
             try

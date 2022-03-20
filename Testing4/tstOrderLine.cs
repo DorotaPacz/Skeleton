@@ -10,7 +10,6 @@ namespace Testing4
 
         //create some test data
         string testQuantity = "15";
-        string testOrderID = "1";
 
 
 
@@ -180,11 +179,13 @@ namespace Testing4
             //create an instance of the class 
             clsOrderLine anOrderLine = new clsOrderLine();
 
+            string Quantity = "15"; //this should be OK
+
             //string variable to store any error message
             String Error = "";
 
             //invoke the method
-            Error = anOrderLine.Valid(testOrderID, testQuantity);
+            Error = anOrderLine.Valid(Quantity);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -199,7 +200,7 @@ namespace Testing4
 
             string Quantity = "-1"; //this should trigger an error
 
-            Error = anOrderLine.Valid(testOrderID, Quantity);
+            Error = anOrderLine.Valid(Quantity);
 
             Assert.AreNotEqual(Error, "");
         }
@@ -213,7 +214,7 @@ namespace Testing4
 
             string Quantity = "0"; //this should trigger an error
 
-            Error = anOrderLine.Valid(testOrderID, Quantity);
+            Error = anOrderLine.Valid(Quantity);
 
             Assert.AreNotEqual(Error, "");
         }
@@ -227,7 +228,7 @@ namespace Testing4
 
             string Quantity = "1"; //this should be OK
 
-            Error = anOrderLine.Valid(testOrderID, Quantity);
+            Error = anOrderLine.Valid(Quantity);
 
             Assert.AreEqual(Error, "");
         }
@@ -241,7 +242,7 @@ namespace Testing4
 
             string Quantity = "abcd"; //this should trigger an error
 
-            Error = anOrderLine.Valid(testOrderID, Quantity);
+            Error = anOrderLine.Valid(Quantity);
 
             Assert.AreNotEqual(Error, "");
         }
