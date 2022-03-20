@@ -20,30 +20,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsOrderLine anOrderline = new clsOrderLine();
 
         // capture the properties from Order form and assign them to Order object
-        int parsedID = Convert.ToInt32(txtOrderID.Text);
-        double parsedTotalPrice = Convert.ToDouble(txtTotalPrice.Text);
-        DateTime parsedDateTime = Convert.ToDateTime(txtDate.Text);
 
-        anOrder.ID = parsedID;
-        anOrder.Date = parsedDateTime;
-        anOrder.TotalPrice = parsedTotalPrice;
-        anOrder.IsFulfilled = chkFulfilled.Checked;
+        string testDate = txtDate.Text;
+        string testTotalPrice = txtTotalPrice.Text;
+        string testQuantity = txtQuantity.Text;
+        string Error = "";
 
-        // capture the properties from OrderLine form and assign them to Order object
-        int parsedStockItemNo = Convert.ToInt32(txtStockItemNo.Text);
-        int parsedOrderIDagain = Convert.ToInt32(txtOrderIDagain.Text);
-        int parsedQuantity = Convert.ToInt32(txtQuantity.Text);
+        Error = anOrder.Valid(testDate, testTotalPrice);
+        Error = Error + anOrderline.Valid(testQuantity);
+        if (Error == "")
+        {
+            int parsedID = Convert.ToInt32(txtOrderID.Text);
+            double parsedTotalPrice = Convert.ToDouble(txtTotalPrice.Text);
+            DateTime parsedDateTime = Convert.ToDateTime(txtDate.Text);
 
-        anOrderline.StockItemNo = parsedStockItemNo;
-        anOrderline.OrderID = parsedOrderIDagain;
-        anOrderline.Quantity = parsedQuantity;
+            anOrder.ID = parsedID;
+            anOrder.Date = parsedDateTime;
+            anOrder.TotalPrice = parsedTotalPrice;
+            anOrder.IsFulfilled = chkFulfilled.Checked;
 
-        //store the ID in the session object
-        Session["OrderID"] = anOrder;
-        Session["Orderline"] = anOrderline;
+            // capture the properties from OrderLine form and assign them to Order object
+            int parsedStockItemNo = Convert.ToInt32(txtStockItemNo.Text);
+            int parsedOrderIDagain = Convert.ToInt32(txtOrderIDagain.Text);
+            int parsedQuantity = Convert.ToInt32(txtQuantity.Text);
 
-        // navigate to the viewer page
-        Response.Redirect("OrdersViewer.aspx");
+            anOrderline.StockItemNo = parsedStockItemNo;
+            anOrderline.OrderID = parsedOrderIDagain;
+            anOrderline.Quantity = parsedQuantity;
+
+            //store the ID in the session object
+            Session["OrderID"] = anOrder;
+            Session["Orderline"] = anOrderline;
+
+            // navigate to the viewer page
+            Response.Redirect("OrdersViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
     }
 
 
