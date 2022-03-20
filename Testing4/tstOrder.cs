@@ -10,7 +10,7 @@ namespace Testing4
 
         //good test data
         //create some test data to pass to the method
-        string testDate = DateTime.Now.ToString();
+        string testDate = DateTime.Now.Date.ToString();
         string testTotalPrice = "1.99";
 
 
