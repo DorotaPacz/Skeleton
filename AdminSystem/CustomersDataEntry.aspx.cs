@@ -32,5 +32,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address class
+        clsCustomer Customer = new clsCustomer();
+        //variable to ostore the primary key
+        Int32 CustomerID;
+        //variable to store the result of theh find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        //find the record
+        Found = Customer.Find(CustomerID);
+        //if found
+        if(Found == true)
+        {
+            //display the values of the properties in the form
+            
+            txtCustomerName.Text = Customer.CustomerName;
+            txtCustomerDOB.Text = Customer.CustomerDOB.ToString();
+            txtStudentDiscountPercentage.Text = Customer.StudnetDiscountPercentage.ToString();
+           
+
+        }
+    }
 }
