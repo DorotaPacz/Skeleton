@@ -39,13 +39,13 @@ namespace Testing1
 
         }
         [TestMethod]
-        public void StudnetDisscountPercentageOK()
+        public void StudnetDiscountPercentageOK()
         {
             //To create an instance of the class 
             clsCustomer Customer = new clsCustomer();
             double TestData = 1.5;
-            Customer.StudnetDisscountPercentage = TestData;
-            Assert.AreEqual(Customer.StudnetDisscountPercentage, TestData);
+            Customer.StudnetDiscountPercentage = TestData;
+            Assert.AreEqual(Customer.StudnetDiscountPercentage, TestData);
 
         }
         [TestMethod]
@@ -75,7 +75,7 @@ namespace Testing1
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
 
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 5;
 
             Found = Customer.Find(CustomerID);
 
@@ -91,11 +91,11 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 5;
 
             Found = Customer.Find(CustomerID);
 
-            if (Customer.CustomerID != 21)
+            if (Customer.CustomerID != 5)
             {
                 OK = false;
             }
@@ -112,11 +112,11 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 5;
 
             Found = Customer.Find(CustomerID);
 
-            if (Customer.CustomerName != "Test Customer Name")
+            if (Customer.CustomerName != "Laura Shaw")
             {
                 OK = false;
             }
@@ -133,11 +133,11 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 5;
 
             Found = Customer.Find(CustomerID);
 
-            if (Customer.StudnetDisscountPercentage != Convert.ToDouble("1.5"))
+            if (Customer.StudnetDiscountPercentage != Convert.ToDouble("0"))
             {
                 OK = false;
             }
@@ -154,11 +154,11 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID =5;
 
             Found = Customer.Find(CustomerID);
 
-            if (Customer.CustomerDOB != Convert.ToDateTime("15/09/2000")) 
+            if (Customer.CustomerDOB != Convert.ToDateTime("05/03/1998")) 
             {
                 OK = false;
             }
@@ -175,7 +175,7 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 5;
 
             Found = Customer.Find(CustomerID);
 
