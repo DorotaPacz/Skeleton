@@ -103,5 +103,32 @@ namespace ClassLibrary
             }
            
         }
+        public string Valid(string staffName, string staffDateStart, string staffSalary)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the staffName not equal 49
+            if (staffName.Length == 0)
+            {
+                Error = Error + "The field was left blank. Please enter staff name: ";
+            }
+
+            if (staffName.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The staff name is too long!  ";
+            }
+
+            //copy the dateAdded value to the DateTemp variable
+            DateTime DateTemp = Convert.ToDateTime(staffDateStart);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+
+            return Error;
+        }
+
     }
 }
