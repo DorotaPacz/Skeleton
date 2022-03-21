@@ -11,6 +11,7 @@
         <div>
             <asp:Label ID="lblStudentDiscountPercentage" runat="server" Text="Student Discount Percentage"></asp:Label>
             <asp:TextBox ID="txtStudentDiscountPercentage" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </div>
         <p>
             <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name" width="174px"></asp:Label>
