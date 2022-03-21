@@ -32,7 +32,7 @@ namespace ClassLibrary
             }
         }
         private double mStudentDiscountPercentage;
-        public double StudnetDisscountPercentage
+        public double StudnetDiscountPercentage
         {
             get
             {
@@ -73,16 +73,32 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int customerID)
+        public bool Find(int CustomerID)
         {
-            //throw new NotImplementedException();
-            mCustomerID = 21;
-            mCustomerDOB = Convert.ToDateTime("15/09/2000");
-            mCustomerName = "Test Customer Name";
-            mStudentDiscountPercentage = Convert.ToDouble("1.5");
-            mIsStudent = true;
-            //always return true
-            return true;
+            //create an instance of teh data connection 
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address no to search for
+            DB.AddParameter("@CustomerID", CustomerID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mCustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDOB"]);
+                mStudentDiscountPercentage = Convert.ToDouble(DB.DataTable.Rows[0]["StudentDiscountPercentage"]);
+                mIsStudent = Convert.ToBoolean(DB.DataTable.Rows[0]["IsStudent"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+            }
         }
 
     }

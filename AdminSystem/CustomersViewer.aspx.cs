@@ -17,7 +17,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(Customer.CustomerID);
         Response.Write(Customer.CustomerName);
         Response.Write(Customer.CustomerDOB);
-        Response.Write(Customer.StudnetDisscountPercentage);
+        Response.Write(Customer.StudnetDiscountPercentage);
         Response.Write(Customer.IsStudent);
         
      

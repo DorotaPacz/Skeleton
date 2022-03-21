@@ -21,7 +21,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Customer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
         Customer.CustomerName = txtCustomerName.Text;
         Customer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
-        Customer.StudnetDisscountPercentage = Convert.ToDouble(txtStudentDiscountPercentage.Text);
+        Customer.StudnetDiscountPercentage = Convert.ToDouble(txtStudentDiscountPercentage.Text);
         Customer.IsStudent = Convert.ToBoolean(chkIsStudnet.Checked);
         Session["Customer"] = Customer;
 
