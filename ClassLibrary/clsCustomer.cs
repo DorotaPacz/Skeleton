@@ -101,5 +101,9 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string customerName, string customerDOB, string studnetDiscountPercentage)
+        {
+            return "";
+        }
     }
 }

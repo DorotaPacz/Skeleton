@@ -7,6 +7,11 @@ namespace Testing1
     [TestClass]
     public class tstCustomer
     {
+        //good test data
+        //create some test data to pass to the method
+        string CustomerName = "Fred Blogger";
+        string CustomerDOB = DateTime.Now.Date.ToString();
+        string StudnetDiscountPercentage = "1.5";
         [TestMethod]
         public void InstancOK()
         {
@@ -137,7 +142,7 @@ namespace Testing1
 
             Found = Customer.Find(CustomerID);
 
-            if (Customer.StudnetDiscountPercentage != Convert.ToDouble("0"))
+            if (Customer.StudnetDiscountPercentage != Convert.ToDouble("1.5"))
             {
                 OK = false;
             }
@@ -185,6 +190,33 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
 
+
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsCustomer Customer = new clsCustomer();
+            //string variable to store any error massage
+            String Error = "";
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMinLessOne()
+        {
+            //craete an insatnce of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string CustomerName = ""; //this should trigger an error
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
 
         }
 
