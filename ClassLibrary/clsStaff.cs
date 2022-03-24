@@ -107,6 +107,10 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
+            //create temporary variable to store date values
+            DateTime DateTemp;
+            Double StaffSalaryTemp;
+            //*****************************StaffName**********************************
             //if the staffName not equal 49
             if (staffName.Length == 0)
             {
@@ -118,17 +122,57 @@ namespace ClassLibrary
                 //record the error 
                 Error = Error + "The staff name is too long!  ";
             }
+            //*****************************DateTemp***********************************************************
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(staffDateStart);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
 
-            //copy the dateAdded value to the DateTemp variable
-            DateTime DateTemp = Convert.ToDateTime(staffDateStart);
-            if (DateTemp < DateTime.Now.Date)
+                }
+            }
+            catch
+            {
+                //return error
+                Error = Error + "The date format is not valid. Enter correct format (i.e. 24/03/2022)";
+            }
+            
+            //********************************StaffSalary************************************************
+            //if the staffSalary is blank
+            if (staffSalary.Length == 0)
             {
                 //record the error
-                Error = Error + "The date cannot be in the past : ";
+                Error = Error + "The staffSalary cannot be blank! ";
             }
 
+            //if staffSalary is less than zero
+            try
+            {
+                StaffSalaryTemp = Convert.ToDouble(staffSalary);
+                if (StaffSalaryTemp < 0)
+                {
+                    Error = Error + "The staffSalary cannot be smaller than zero! ";
+                }
+
+            }
+            catch
+            {
+                Error = Error + "The staffSalary was not a valid data type! Enter correct format (i.e. 12345.67)";
+            }
+            
+            //return any error messages
             return Error;
         }
+
 
     }
 }
