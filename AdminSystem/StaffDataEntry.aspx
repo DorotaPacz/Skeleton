@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="StaffForm" runat="server">
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 438px; top: 121px; position: absolute" Text="Find" />
     Welcome, this is Staff Management Website.
         <p style="margin-bottom: 0px">

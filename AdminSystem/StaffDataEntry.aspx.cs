@@ -18,21 +18,40 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create new instance
         clsStaff AStaff = new clsStaff();
-        //capture the Id  
-        AStaff.IdNoOK = Convert.ToInt32(txtStaffIdNo.Text);
+        //capture the IdNo
+        string IdNoOK = txtStaffIdNo.Text;
         //capture the name
-        AStaff.StaffName = txtStaffName.Text;
+        string StaffName = txtStaffName.Text;
         //capture the registration date
-        AStaff.DateBegin = Convert.ToDateTime(txtStaffStartDate.Text);
+        string DateBegin = txtStaffStartDate.Text;
         //capture the salary
-        AStaff.Salary = Convert.ToDouble(txtStaffSalary.Text);
-        //capture the admin confirmation 
-        AStaff.IsAdmin = chkIsAdmin.Checked;
+        string Salary = txtStaffSalary.Text;
+        
+        string Error = "";
+        Error = AStaff.Valid(StaffName, DateBegin, Salary);
+        if (Error == "")
+        {
+            //capture the IdNo  
+            AStaff.IdNoOK = Convert.ToInt32(txtStaffIdNo.Text);
+            //capture the name
+            AStaff.StaffName = txtStaffName.Text;
+            //capture the registration date
+            AStaff.DateBegin = Convert.ToDateTime(txtStaffStartDate.Text);
+            //capture the salary
+            AStaff.Salary = Convert.ToDouble(txtStaffSalary.Text);
+            //capture the admin confirmation 
+            AStaff.IsAdmin = chkIsAdmin.Checked;
 
-        //store name
-        Session["AStaff"] = AStaff;
-        //navigate to the viewer page
-        Response.Redirect("StaffViewer.aspx");
+            //store name
+            Session["AStaff"] = AStaff;
+            //redirect to the viewer page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
 
