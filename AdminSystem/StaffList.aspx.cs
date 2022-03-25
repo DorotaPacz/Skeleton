@@ -37,4 +37,12 @@ public partial class _1_List : System.Web.UI.Page
     {
         Response.Redirect("StaffViewer.aspx");
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["IdNoOK"] = -1;
+        //redirect to the data entry
+        Response.Redirect("StaffDataEntry.aspx");
+    }
 }
