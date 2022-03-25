@@ -42,10 +42,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the admin confirmation 
             AStaff.IsAdmin = chkIsAdmin.Checked;
 
-            //store name
-            Session["AStaff"] = AStaff;
-            //redirect to the viewer page
-            Response.Redirect("StaffViewer.aspx");
+            //create a new instance (list) of staff collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set ThisStaff property
+            StaffList.ThisStaff = AStaff;
+            //add new record
+            StaffList.Add();
+            //redirect back to the list page
+            Response.Redirect("StaffList.aspx");
         }
         else
         {

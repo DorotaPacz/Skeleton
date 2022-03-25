@@ -15,9 +15,8 @@ namespace Testing
             string StaffSalary = "£45678.50";
             //create a variable to store the test date data
             DateTime TestDate;
-            string testTotalPrice = "£12345.67";
-
-        [TestMethod]
+            
+             [TestMethod]
             public void InstanceDBOK()
             {
                 //create an instance of the class we want to create
