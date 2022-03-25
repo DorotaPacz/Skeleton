@@ -70,9 +70,115 @@ namespace Testing5
         public void SupplierAddressOK()
         {
             clsSuppliers AnSuppliers = new clsSuppliers();
-            string TestData = "22 madden street Leicester";
+            string TestData = "2 manny road nigeria";
             AnSuppliers.SupplierAddress = TestData;
             Assert.AreEqual(AnSuppliers.SupplierAddress, TestData);
         }
-    }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsSuppliers AnSuppliers = new clsSuppliers();
+            //Boolean varaible to store the result of the validation
+            Boolean Found = false;
+            //create some test data to use with method
+            Int32 SuppliersId = 21;
+            //invoke the method
+            Found = AnSuppliers.Find(SuppliersId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestSuppliersIdFound()
+        {
+            //create an instance of the class we want to create
+            clsSuppliers AnSuppliers = new clsSuppliers();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 SuppliersId = 21;
+            //invoke the method
+            Found = AnSuppliers.Find(SuppliersId);
+            //check the address no
+            if (AnSuppliers.SuppliersId != 21)
+            {
+                OK = false;
+            }
+            //test to see that result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestSupplierNameFound()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierId = 21;
+            Found = AnSuppliers.Find(SupplierId);
+            if (AnSuppliers.SupplierName != "Manny LTD")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestSupplierEmailFound()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierId = 21;
+            Found = AnSuppliers.Find(SupplierId);
+            if (AnSuppliers.SupplierEmail != "supplier@mail.com")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestSupplierAddressFound()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierId = 21;
+            Found = AnSuppliers.Find(SupplierId);
+            if (AnSuppliers.SupplierAddress != "2 manny road nigeria")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestSupplierContactNoFound()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierId = 21;
+            Found = AnSuppliers.Find(SupplierId);
+            if (AnSuppliers.SupplierContactNo != 07099772331)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestSupplierAvailableFound()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierId = 21;
+            Found = AnSuppliers.Find(SupplierId);
+            if (AnSuppliers.SupplierAvailable != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        }
 }
