@@ -103,7 +103,22 @@ namespace ClassLibrary
 
         public string Valid(string customerName, string customerDOB, string studnetDiscountPercentage)
         {
-            return "";
+            //create a string variable to stre the error 
+            String Error = "";
+            //if the CusomerName is balck
+            if (customerName.Length == 0)
+            {
+                //record the  error 
+                Error = Error + "The Customer Name may not be blank: ";
+            }
+            //if the cutsomer name is greater than 20 characters
+              if(customerName.Length > 20)
+            {
+                //recored the error
+                Error = Error + "Th ecustomer name must be less than 20 characters: ";
+            }
+            //return any error message 
+            return Error;
         }
     }
 }
