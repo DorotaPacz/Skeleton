@@ -145,7 +145,7 @@ namespace Testing3
 			//invoke the method
 			Found = AStock.Find(StockItemNo);
 			//check the property
-			if (AStock.DateAdded != Convert.ToDateTime("16/09/2021")) 
+			if (AStock.DateAdded != Convert.ToDateTime("06/03/2022")) 
 			{
 				OK = false;
 			}
@@ -189,7 +189,7 @@ namespace Testing3
 			//invoke the method
 			Found = AStock.Find(StockItemNo);
 			//check the property
-			if(AStock.StockItemDescription != "Test Description") 
+			if(AStock.StockItemDescription != "Electric Guitar") 
 			{
 				OK = false;
 			}
@@ -211,7 +211,7 @@ namespace Testing3
 			//invoke the method
 			Found = AStock.Find(StockItemNo);
 			//check the property
-			if(AStock.Price != 10)
+			if(AStock.Price != 500)
             {
 				OK = false;
             }
@@ -233,7 +233,7 @@ namespace Testing3
 			//invoke the method
 			Found = AStock.Find(StockItemNo);
 			//check the property
-			if(AStock.QuantityInStock != 3)
+			if(AStock.QuantityInStock != 10)
             {
 				OK = false;
             }
