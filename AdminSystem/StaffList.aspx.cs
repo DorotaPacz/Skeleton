@@ -45,4 +45,24 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the data entry
         Response.Redirect("StaffDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key
+        Int32 StaffIdNo;
+        //if the record has been selected from the list
+        if(lstStaffList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record edit
+            StaffIdNo = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store data in the sesion object
+            Session["StaffIdNo"] = StaffIdNo;
+            //redirect to the edit page
+            Response.Redirect("StaffDataEntry.aspx");
+        }
+        else //if no ecord has been selected
+        {
+            lblError.Text = "Please select the record to edit from the list";
+        }
+    }
 }
