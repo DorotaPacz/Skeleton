@@ -149,5 +149,37 @@ namespace StaffCollection
             //test to see ThisStaff matches the test data
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create an item of the test data
+            clsStaff TestItem = new clsStaff();
+            //var to store primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.IsAdmin = true;
+            TestItem.IdNoOK = 1;
+            TestItem.StaffName = "Dorota Paczkowska";
+            TestItem.DateBegin = DateTime.Now.Date;
+            TestItem.Salary = 12345.67;
+            //set ThisStaff to the test data 
+            AllStaff.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set the primary kay of the test data
+            TestItem.IdNoOK = PrimaryKey;
+            //find the record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //delete the record
+            AllStaff.Delete();
+            //now find the record
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see that record was not found
+            Assert.IsFalse(Found);
+
+        }
     }
 }
