@@ -19,7 +19,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AStock = new clsStock();
 
         //capture stock item number
-        AStock.StockItemNo = Convert.ToInt32(txtStockNo.Text);
+        AStock.StockItemNo = Convert.ToInt32(txtStockItemNo.Text);
 
         //capture stock item description
         AStock.StockItemDescription = txtStockItemDesc.Text;
@@ -52,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store the result of the find operation
         Boolean Found = false;
         //get the primary key entered by the user
-        StockItemNo = Convert.ToInt32(txtStockNo.Text);
+        StockItemNo = Convert.ToInt32(txtStockItemNo.Text);
         //find the record
         Found = AStock.Find(StockItemNo);
         //if found
