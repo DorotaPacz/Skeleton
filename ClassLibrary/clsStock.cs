@@ -127,5 +127,35 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string stockItemDescription, string dateAdded, string price, string quantityInStock)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //temporary variable
+            DateTime DateTemp;
+        
+            //if the StockItemDescription is blank
+            if(stockItemDescription.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Stock Item Description may not be blank : ";
+            }
+            //if the StockItemDescription is greater than 50 characters
+            if(stockItemDescription.Length > 50)
+            {
+                Error = Error + "The StockItemDescription must be less than 50 characters : ";
+            }
+
+            //copy the dateAdded value to the DateTemp variable
+            DateTemp = Convert.ToDateTime(dateAdded);
+            if(DateTemp < DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+            //return any error message
+            return Error;
+        }
     }
 }

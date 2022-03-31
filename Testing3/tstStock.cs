@@ -7,6 +7,11 @@ namespace Testing3
 	[TestClass]
 	public class tstStock
 	{
+		//good test data
+		string StockItemDescription = "Electric Guitar";
+		string DateAdded = DateTime.Now.Date.ToString();
+		string Price = "300";
+		string QuantityInStock = "3";
 		[TestMethod]
 		public void InstanceOK()
 		{
@@ -241,6 +246,125 @@ namespace Testing3
 			Assert.IsTrue(OK);
         }
 
+		[TestMethod]
+		public void ValidMethodOK()
+        {
+			//create an instance of the class we want to create
+			clsStock AStock = new clsStock();
+			//string variable to store any error message
+			String Error = "";
+			//invoke the method
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			//test to see that the result is correct
+			Assert.AreEqual(Error, "");
+        }
+
+		[TestMethod]
+		public void StockItemDescriptionMinLessOne()
+        {
+			//create an instance of the class we want to create
+			clsStock AStock = new clsStock();
+			//string variable to store any error message
+			String Error = "";
+			//create some test data to pass to the method
+			string StockItemDescription = ""; //this triggers error
+											  //invoke the method
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			//test to see that the result is correct
+			Assert.AreNotEqual(Error, "");
+        }
+
+		[TestMethod]
+		public void StockItemDescriptionMin()
+        {
+			clsStock AStock = new clsStock();
+			String Error = "";
+			string StockItemDescription = "E";
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			Assert.AreEqual(Error, "");
+        }
+
+		[TestMethod]
+		public void StockItemDescriptionPlusOne()
+        {
+			clsStock AStock = new clsStock();
+			String Error = "";
+			string StockItemDescription = "Ee";
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			Assert.AreEqual(Error, "");
+        }
+
+		[TestMethod]
+		public void StockItemDescriptionMaxLessOne()
+        {
+			clsStock AStock = new clsStock();
+			String Error = "";
+			string StockItemDescription = "Eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			Assert.AreEqual(Error, "");
+        }
+
+		[TestMethod]
+		public void StockItemDescriptionMax()
+		{
+			clsStock AStock = new clsStock();
+			String Error = "";
+			string StockItemDescription = "Eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			Assert.AreEqual(Error, "");
+		}
+
+		[TestMethod]
+		public void StockItemDescriptionMid()
+		{
+			clsStock AStock = new clsStock();
+			String Error = "";
+			string StockItemDescription = "Eeeeeeeeeeeeeeeeeeeeeeeee";
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			Assert.AreEqual(Error, "");
+		}
+
+		[TestMethod]
+		public void StockItemDescriptionMaxPlusOne()
+		{
+			clsStock AStock = new clsStock();
+			String Error = "";
+			string StockItemDescription = "Eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			Assert.AreNotEqual(Error, "");
+		}	
+
+		[TestMethod]
+		public void StockItemDescriptionExtremeMax()
+        {
+			clsStock AStock = new clsStock();
+			String Error = "";
+			string StockItemDescription = "";
+			StockItemDescription = StockItemDescription.PadRight(500, 'a');
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			Assert.AreNotEqual(Error, "");
+        }
+
+		[TestMethod]
+		public void DateAddedExtremeMin()
+        {
+			//create an instance of the class we want to create
+			clsStock AStock = new clsStock();
+			//string variable to store any error message
+			String Error = "";
+			//create a variable to store the test date data
+			DateTime TestDate;
+			//set the date to today's date
+			TestDate = DateTime.Now.Date;
+			//change the data to whatever the date is less 100 years
+			TestDate = TestDate.AddYears(-100);
+			//convert the date variable to a string variable
+			string DateAdded = TestDate.ToString();
+			//invoke the method
+			Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+			//test to see that the result is correct
+			Assert.AreNotEqual(Error, "");
+        }
 
 	}
 }
