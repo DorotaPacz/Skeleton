@@ -9,8 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblStudentDiscountPercentage" runat="server" Text="Student Discount Percentage"></asp:Label>
-            <asp:TextBox ID="txtStudentDiscountPercentage" runat="server"></asp:TextBox>
+            <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="174px"></asp:Label>
+            <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </div>
         <p>
@@ -20,8 +20,8 @@
         <asp:Label ID="lblCustomerDOB" runat="server" Text="Customer DOB" width="174px"></asp:Label>
         <asp:TextBox ID="txtCustomerDOB" runat="server"></asp:TextBox>
         <p>
-            <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="174px"></asp:Label>
-            <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+            <asp:Label ID="lblStudentDiscountPercentage" runat="server" Text="Student Discount Percentage"></asp:Label>
+            <asp:TextBox ID="txtStudentDiscountPercentage" runat="server"></asp:TextBox>
         </p>
         <asp:CheckBox ID="chkIsStudnet" runat="server" Text="Studnet" width="174px" />
         <p>

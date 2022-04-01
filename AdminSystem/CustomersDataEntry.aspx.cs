@@ -16,19 +16,61 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+
+        //clsCustomer Customer = new clsCustomer();
+
+        //Customer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        //Customer.CustomerName = txtCustomerName.Text;
+        //Customer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
+        //Customer.StudnetDiscountPercentage = Convert.ToDouble(txtStudentDiscountPercentage.Text);
+        //Customer.IsStudent = Convert.ToBoolean(chkIsStudnet.Checked);
+        //Session["Customer"] = Customer;
+
+        // //navigate to the viewer page
+        //Response.Redirect("CustomersViewer.aspx");
+
+
+
+        //creatr a new instance of clsCustomer
         clsCustomer Customer = new clsCustomer();
+        //capture the Customer ID
+        string CustomerID = txtCustomerID.Text;
+        //Capture the Customer Name 
+        string CustomerName = txtCustomerName.Text;
+        //Capture the Customer DOB 
+        string CustomerDOB = txtCustomerDOB.Text;
+        //Capture the student discount percentage
+        string StudnetDiscountPercentage = txtStudentDiscountPercentage.Text;
+        //Capture the Is Studnet 
+        string IsStudent = chkIsStudnet.Text;
 
-        Customer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        Customer.CustomerName = txtCustomerName.Text;
-        Customer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
-        Customer.StudnetDiscountPercentage = Convert.ToDouble(txtStudentDiscountPercentage.Text);
-        Customer.IsStudent = Convert.ToBoolean(chkIsStudnet.Checked);
-        Session["Customer"] = Customer;
+        //Variable to store any error message 
+        string Error = "";
+        //Validate the data 
+        Error = Customer.Valid( CustomerName, CustomerDOB, StudnetDiscountPercentage);
+        if (Error == "")
+        {
+            //Capture the Customer Id 
+             Customer.CustomerID = Convert.ToInt32(CustomerID);
+            //Capture the Customer name 
+            Customer.CustomerName = CustomerName;
+            //Capture the customer DOB
+            Customer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
+            //capture the student disscount percentage
+            Customer.StudnetDiscountPercentage = Convert.ToDouble(StudnetDiscountPercentage);
+            //Capture the is studnet 
+         //   Customer.IsStudent = Convert.ToBoolean(IsStudent);
+            //store the custmer is the session object 
+            Session["Customer"] = Customer;
+            //Redirect to the viewer page
+            Response.Write("CustomersViewer.aspx");
 
-         //navigate to the viewer page
-        Response.Redirect("CustomersViewer.aspx");
-
-
+        }
+        else
+        {
+            //Display the error message 
+            lblError.Text = Error;
+        }
 
     }
 
