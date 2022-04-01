@@ -105,6 +105,9 @@ namespace ClassLibrary
         {
             //create a string variable to stre the error 
             String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+           
             //if the CusomerName is balck
             if (customerName.Length == 0)
             {
@@ -117,7 +120,29 @@ namespace ClassLibrary
                 //recored the error
                 Error = Error + "Th ecustomer name must be less than 20 characters: ";
             }
+            try
+            {
+                //copy the CustomerBOD value to the DateTemp var
+                DateTemp = Convert.ToDateTime(customerDOB);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //recored he error
+                    Error = Error + "The date cannot be in the past: ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //recored the error
+                    Error = Error + "The date cannot be i ten future : ";
+                }
+            }
+            catch
+            {
+                //recored the error
+                Error = Error + "The date was not a valid date : ";
+            }
             //return any error message 
+           
             return Error;
         }
     }

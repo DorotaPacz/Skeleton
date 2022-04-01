@@ -322,7 +322,121 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-
+        //************************************CustomerDOBValidation***********************************************
+        [TestMethod]
+        public void CustomerDOBExtremeMin()
+        {
+            //create an instance of the class we want tpo create
+            clsCustomer Customer = new clsCustomer();
+            //string valiable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less than 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the dat evariable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBMinLessOne()
+        {
+            //create an instance of the class we want tpo create
+            clsCustomer Customer = new clsCustomer();
+            //string valiable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less than 1 years
+            TestDate = TestDate.AddDays(-1);
+            //convert the dat evariable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBMin()
+        {
+            //create an instance of the class we want tpo create
+            clsCustomer Customer = new clsCustomer();
+            //string valiable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //convert the dat evariable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBMinPlusOne()
+        {
+            //create an instance of the class we want tpo create
+            clsCustomer Customer = new clsCustomer();
+            //string valiable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //Change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //change the date to whatever the date is less than 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the dat evariable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBExtremeMax()
+        {
+            //create an instance of the class we want tpo create
+            clsCustomer Customer = new clsCustomer();
+            //string valiable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the dat evariable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //String var to store the error message
+            String Error = "";
+            //set the CustomerDOB to a non date value
+            string CustomerDOB = "This is not a date!";
+            //Invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
 
     }
 }
