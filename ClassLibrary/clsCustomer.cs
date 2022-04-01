@@ -107,7 +107,8 @@ namespace ClassLibrary
             String Error = "";
             //create a temporary variable to store date values
             DateTime DateTemp;
-           
+            Double StudnetDiscountPercentageTemp;
+
             //if the CusomerName is balck
             if (customerName.Length == 0)
             {
@@ -141,8 +142,27 @@ namespace ClassLibrary
                 //recored the error
                 Error = Error + "The date was not a valid date : ";
             }
+            //if the StudnetDiscountPercentage is balnk
+            if (studnetDiscountPercentage.Length == 0)
+            {
+                //recored the error
+                Error = Error + " The StudnetDiscountPercentage cannot be blank :  ";
+            }
+            // if the StudnetDiscountPercentage is less than 0
+            try
+            {
+                StudnetDiscountPercentageTemp = Convert.ToDouble(studnetDiscountPercentage);
+                if (StudnetDiscountPercentageTemp < 0)
+                {
+                    Error = Error + "The StudnetDiscountPercentage cannot be smaller than 0";
+                }
+            }
+            catch
+            {
+                Error = Error + "The StudnetDiscountPercentage was not a valid data type";
+            }
             //return any error message 
-           
+
             return Error;
         }
     }

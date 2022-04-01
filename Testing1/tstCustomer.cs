@@ -437,6 +437,108 @@ namespace Testing1
             //Test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+        //************************************StudentDiscountPercentageValidation*****************************************************************
+        [TestMethod]
+        public void StudnetDiscountPercentageMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //String var to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string StudnetDiscountPercentage = "-0.01";//should tigger an error
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see that the result is right
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StudnetDiscountPercentageMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //String var to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string StudnetDiscountPercentage = "0.00";
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see that the result is right
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StudnetDiscountPercentageExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //String var to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string StudnetDiscountPercentage = "-10000";
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see that the result is right
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StudnetDiscountPercentagePlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //String var to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string StudnetDiscountPercentage = "0.01";
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see that the result is right
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StudnetDiscountPercentageLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //String var to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string StudnetDiscountPercentage = " -0.01";
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see that the result is right
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StudnetDiscountPercentageMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //String var to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string StudnetDiscountPercentage = " -0.01";
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see that the result is right
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StudnetDiscountPercentageInvalidData()
+        {
+            
+
+            //create an instance of the class we want to create
+            clsCustomer Customer = new clsCustomer();
+            //String var to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string StudnetDiscountPercentage = "This is not valid Studnet Discount Percentage value! ";
+            //invoke the method
+            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
+            //Test to see that the result is right
+            Assert.AreNotEqual(Error, "");
+
+        }
 
     }
 }
