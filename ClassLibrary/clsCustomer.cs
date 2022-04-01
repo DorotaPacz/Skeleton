@@ -119,7 +119,7 @@ namespace ClassLibrary
               if(customerName.Length > 20)
             {
                 //recored the error
-                Error = Error + "Th ecustomer name must be less than 20 characters: ";
+                Error = Error + "The Customer Name must be less than 20 characters: ";
             }
             try
             {
@@ -134,7 +134,7 @@ namespace ClassLibrary
                 if (DateTemp > DateTime.Now.Date)
                 {
                     //recored the error
-                    Error = Error + "The date cannot be i ten future : ";
+                    Error = Error + "The date cannot be in the future : ";
                 }
             }
             catch
