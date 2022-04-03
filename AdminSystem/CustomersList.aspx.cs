@@ -30,4 +30,12 @@ public partial class _1_List : System.Web.UI.Page
         //bind teh data to teh list
         lstCustomerList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 ito the session object to indicate this is a new recored
+        Session["CustomerID"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("CustomersList.aspx");
+    }
 }

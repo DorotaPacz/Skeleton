@@ -59,11 +59,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the student disscount percentage
             Customer.StudnetDiscountPercentage = Convert.ToDouble(StudnetDiscountPercentage);
             //Capture the is studnet 
-         //   Customer.IsStudent = Convert.ToBoolean(IsStudent);
-            //store the custmer is the session object 
-            Session["Customer"] = Customer;
-            //Redirect to the viewer page
-            Response.Write("CustomersViewer.aspx");
+            Customer.IsStudent = Convert.ToBoolean(IsStudent);
+            //create a new instance if teh Customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = Customer;
+            //add the new recored
+            CustomerList.Add();
+            //redirect back to the listpage
+            Response.Redirect("CustomersList");
+
+
+            ////store the custmer is the session object 
+            //Session["Customer"] = Customer;
+            ////Redirect to the viewer page
+            //Response.Write("CustomersViewer.aspx");
 
         }
         else
