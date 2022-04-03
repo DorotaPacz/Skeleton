@@ -6,6 +6,8 @@ namespace ClassLibrary
     public class clsCustomerCollection
     {
         private List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //priavet data member ThisCustomer
+        clsCustomer mThisCustomer = new clsCustomer();
 
         public List<clsCustomer> CustomerList
         {
@@ -32,32 +34,25 @@ namespace ClassLibrary
             }
         }
         
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //return the private data
+                return mThisCustomer;
+            }
+            set
+            {
+                //set the private data
+                mThisCustomer = value;
+            }
+        }
 
 
         //constructor for the class
         public clsCustomerCollection()
         {
-            ////Create the item of test data
-            //clsCustomer TestItem = new clsCustomer();
-            ////set its properties
-            //TestItem.IsStudent = true;
-            //TestItem.CustomerID = 1;
-            //TestItem.CustomerName = "Jake John";
-            //TestItem.CustomerDOB = DateTime.Now.Date;
-            //TestItem.StudnetDiscountPercentage = 1.5000;
-            ////add the item to teh test list
-            //mCustomerList.Add(TestItem);
-            ////re initialise the object for some new data
-            //TestItem = new clsCustomer();
-            ////set its properties
-            //TestItem.IsStudent = true;
-            //TestItem.CustomerID = 5;
-            //TestItem.CustomerName = "Laura Shaw";
-            //TestItem.CustomerDOB = DateTime.Now.Date;
-            //TestItem.StudnetDiscountPercentage = 1.5000;
-            ////add the ietem to the test list 
-            //mCustomerList.Add(TestItem);
+           
 
             //var for the index
             Int32 Index = 0;
@@ -85,6 +80,20 @@ namespace ClassLibrary
                 //point at the next recored
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //adds a new recored to the database based on the va;ues of thisCustomer
+            //connect to the data base
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stores procedure
+            DB.AddParameter("CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("CustomerDOB", mThisCustomer.CustomerDOB);
+            DB.AddParameter("StudentDiscountPercentage", mThisCustomer.StudnetDiscountPercentage);
+            DB.AddParameter("IsStudent", mThisCustomer.IsStudent);
+            //execute the query returning the primary key
+            return DB.Execute("sproc_tblCustomer_Insert");
         }
     }
 }
