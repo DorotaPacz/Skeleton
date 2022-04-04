@@ -59,4 +59,24 @@ public partial class _1_List : System.Web.UI.Page
 
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key valueof the recored to be edited
+        Int32 CustomerID;
+        //if a recored has been selected from teh list
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            //get the primary key value of teh recored to edit
+            CustomerID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //store the data in the session object
+            Session["CustomerID"] = CustomerID;
+            //redired to the delete page
+            Response.Redirect("CustomersConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a recored to delete from the list";
+        }
+    }
 }

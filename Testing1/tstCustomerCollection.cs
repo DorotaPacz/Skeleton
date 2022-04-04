@@ -149,6 +149,36 @@ namespace Testing1
 
 
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance oof teh class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of the test data
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.IsStudent = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerName = " Some Name";
+            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.StudnetDiscountPercentage = 1.5000;
+            //set htisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the recored
+            PrimaryKey = AllCustomers.Add();
+            //set the peimary key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            //find the recored
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //delete teh recored
+            AllCustomers.Delete();
+            //now find the recored
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the recored was not found
+            Assert.IsFalse(Found);
+        }
 
 
     }
