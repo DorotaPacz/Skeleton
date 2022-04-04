@@ -88,12 +88,28 @@ namespace ClassLibrary
             //connect to the data base
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stores procedure
-            DB.AddParameter("CustomerName", mThisCustomer.CustomerName);
-            DB.AddParameter("CustomerDOB", mThisCustomer.CustomerDOB);
-            DB.AddParameter("StudentDiscountPercentage", mThisCustomer.StudnetDiscountPercentage);
-            DB.AddParameter("IsStudent", mThisCustomer.IsStudent);
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerDOB", mThisCustomer.CustomerDOB);
+            DB.AddParameter("@StudentDiscountPercentage", mThisCustomer.StudnetDiscountPercentage);
+            DB.AddParameter("@IsStudent", mThisCustomer.IsStudent);
             //execute the query returning the primary key
             return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        public void Update()
+        {
+            //update an existing recored baed on the values of ThisCustomer
+            //connect to the datbase
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters fo rthe stored procedure
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerDOB", mThisCustomer.CustomerDOB);
+            DB.AddParameter("@StudentDiscountPercentage", mThisCustomer.StudnetDiscountPercentage);
+            DB.AddParameter("@IsStudent", mThisCustomer.IsStudent);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_Update");
+
         }
     }
 }

@@ -113,7 +113,42 @@ namespace Testing1
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //craete an instance of the class we wan to use
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.IsStudent = true;
+            TestItem.CustomerName = "A Name";
+            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.StudnetDiscountPercentage = 1.5000;
+            //set this Customer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the recored
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            //modify the test data 
+            TestItem.IsStudent = false;
+            TestItem.CustomerName = "B Name";
+            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.StudnetDiscountPercentage = 0.000;
+            //seth teh recored based on the new test data 
+            AllCustomers.ThisCustomer = TestItem;
+            //update the recored
+            AllCustomers.Update();
+            //find the recored
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see thisCustomer matches the test data
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
+
+        }
 
 
     }

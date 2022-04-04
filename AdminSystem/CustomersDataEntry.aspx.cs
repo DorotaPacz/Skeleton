@@ -9,32 +9,48 @@ using System.Web.UI.WebControls;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //var to store the primary key with page level scope
+    Int32 CustomerID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the customer to be processed
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if(IsPostBack == false)
+        {
+            // if this is not a new recored
+            if (CustomerID != -1)
+            {
+                //display teh current daat for the recored
+                DisplayCustomer();
+            }
+        }
+    }
 
+    void DisplayCustomer()
+    {
+        //craete an instance of the customerList
+        clsCustomerCollection CustomerL = new clsCustomerCollection();
+        //find teh recored to update
+        CustomerL.ThisCustomer.Find(CustomerID);
+        //dispaly the data for this recored
+        txtCustomerID.Text = CustomerL.ThisCustomer.CustomerID.ToString();
+        txtCustomerName.Text = CustomerL.ThisCustomer.CustomerName;
+        txtCustomerDOB.Text = CustomerL.ThisCustomer.CustomerDOB.ToString();
+        txtStudentDiscountPercentage.Text = CustomerL.ThisCustomer.StudnetDiscountPercentage.ToString();
+        chkIsStudnet.Checked = CustomerL.ThisCustomer.IsStudent;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
 
-        //clsCustomer Customer = new clsCustomer();
-
-        //Customer.CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        //Customer.CustomerName = txtCustomerName.Text;
-        //Customer.CustomerDOB = Convert.ToDateTime(txtCustomerDOB.Text);
-        //Customer.StudnetDiscountPercentage = Convert.ToDouble(txtStudentDiscountPercentage.Text);
-        //Customer.IsStudent = Convert.ToBoolean(chkIsStudnet.Checked);
-        //Session["Customer"] = Customer;
-
-        // //navigate to the viewer page
-        //Response.Redirect("CustomersViewer.aspx");
+  
 
 
 
         //creatr a new instance of clsCustomer
         clsCustomer Customer = new clsCustomer();
         //capture the Customer ID
-        string CustomerID = txtCustomerID.Text;
+        // ustring CustomerID = txtCustomerID.Text;
         //Capture the Customer Name 
         string CustomerName = txtCustomerName.Text;
         //Capture the Customer DOB 
@@ -62,25 +78,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Customer.IsStudent = Convert.ToBoolean(IsStudent);
             //create a new instance if teh Customer collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //set the ThisCustomer property
-            CustomerList.ThisCustomer = Customer;
-            //add the new recored
-            CustomerList.Add();
-            //redirect back to the listpage
-            Response.Redirect("CustomersList");
 
-
-            ////store the custmer is the session object 
-            //Session["Customer"] = Customer;
-            ////Redirect to the viewer page
-            //Response.Write("CustomersViewer.aspx");
-
+            
+            //if this is a new recored i.e. CustomerID = -1 then add the data
+           if (CustomerID == -1)
+            {
+                //seth the ThisCustomer property
+                CustomerList.ThisCustomer = Customer;
+                //add the new recored
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the recored to update
+                CustomerList.ThisCustomer.Find(CustomerID);
+                //set the thisCustomer property
+                CustomerList.Update();
+                //update the recored
+                CustomerList.Update();
+            }
+            //redirectt back to the listpage
+            Response.Redirect("CustomersList.aspx");
         }
         else
         {
             //Display the error message 
             lblError.Text = Error;
         }
+
 
     }
 
