@@ -36,6 +36,27 @@ public partial class _1_List : System.Web.UI.Page
         //store -1 ito the session object to indicate this is a new recored
         Session["CustomerID"] = -1;
         //redirect to the data entry page
-        Response.Redirect("CustomersList.aspx");
+        Response.Redirect("CustomersDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value of teh recored to be edited
+        Int32 CustomerID;
+        //if a recored has been selected from tge ;ist
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            //get the primary key va;ie of teh recored to edit
+            CustomerID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //store the data in the session object
+            Session["CustomerID"] = CustomerID;
+            //redirect to th edit page
+            Response.Redirect("CustomersDataEntry.aspx");
+        }
+        else //if no recored has been selected
+        {
+            lblError.Text = "Please select a recored to edit from the list";
+
+        }
     }
 }
