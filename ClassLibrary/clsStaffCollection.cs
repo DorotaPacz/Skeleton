@@ -58,6 +58,8 @@ namespace ClassLibrary
             Int32 RecordCount = 0;
             //object for data connection
             clsDataConnection DB = new clsDataConnection();
+            //populate the array list with the data table
+            PopulateArray(DB);
             //execute the stored procedure
             DB.Execute("sproc_tblStaffManagement_SelectAll");
             //get the count of records
@@ -122,6 +124,50 @@ namespace ClassLibrary
             DB.AddParameter("@StaffIdNo", mThisStaff.IdNoOK);
             //execute the stored procedure
             DB.Execute("sproc_tblStaffManagement_Delete");
+
+        }
+
+        public void ReportByStaffName(string StaffName)
+        {
+            //filters the records based on the full or partial staff name
+            //connect to the database 
+            clsDataConnection DB = new clsDataConnection();
+            //send the name parameter to the database
+            DB.AddParameter("@StaffName", StaffName);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaffManagement_FilteredByStaffName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        public void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //var for the index
+            Int32 Index = 0;
+            //var to store the record count 
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStaffList = new List<clsStaff>();
+            //while there are records to process
+            while(Index < RecordCount)
+            {
+                //create blank staff name
+                clsStaff AStaff = new clsStaff();
+                //read in the fields from the current record
+                AStaff.IsAdmin = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsAdmin"]);
+                AStaff.IdNoOK = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffIdNo"]);
+                AStaff.StaffName = Convert.ToString(DB.DataTable.Rows[Index]["StaffName"]);
+                AStaff.DateBegin = Convert.ToDateTime(DB.DataTable.Rows[Index]["StaffDateStarted"]);
+                AStaff.Salary = Convert.ToDouble(DB.DataTable.Rows[Index]["StaffSalary"]);
+                //add the record to the private data member
+                mStaffList.Add(AStaff);
+                //point at the next record
+                Index++;
+            }
+
 
         }
     }

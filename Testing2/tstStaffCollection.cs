@@ -16,7 +16,7 @@ namespace StaffCollection
             Assert.IsNotNull(AllStaff);
         }
 
-        
+
         [TestMethod]
         public void StaffListOK()
         {
@@ -112,7 +112,7 @@ namespace StaffCollection
             //test to see that the values are the same 
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
-        
+
         [TestMethod]
         public void UpdateMethodOK()
         {
@@ -181,5 +181,65 @@ namespace StaffCollection
             Assert.IsFalse(Found);
 
         }
+
+        [TestMethod]
+        public void ReportByStaffNameMethodOK()
+        {
+            //create an instance of the class
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create an instance of the filtered data 
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            //apply a blank string(should return all records)
+            FilteredStaffs.ReportByStaffName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaff.Count, FilteredStaffs.Count);
+        }
+        [TestMethod]
+        public void ReportByStaffNameNoneFound()
+        {
+            //create an instance of the class
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create an instance of the filtered data 
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            //apply the name that does not exist
+            FilteredStaffs.ReportByStaffName("xxxx xxxx");
+            Assert.AreEqual(0, FilteredStaffs.Count);
+
+
+        }
+        [TestMethod]
+        public void ReportByStaffNameTestDataFound()
+        {
+            //create an instance of the class
+            //clsStaffCollection AllStaff = new clsStaffCollection();
+            //create an instance of the filtered data 
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            //var to store outcome 
+            Boolean OK = true;
+            //apply a name that does exist
+            FilteredStaffs.ReportByStaffName("Benjamin Ahmed");
+            //check that the correct number of records are found
+            if (FilteredStaffs.Count == 2)
+            {
+                //check that the first record is ID 2
+                if(FilteredStaffs.StaffList[0].IdNoOK !=2)
+                {
+                    OK = false;
+                }
+                //check that the second record is ID 3
+                if (FilteredStaffs.StaffList[1].IdNoOK != 3)
+                {
+                    OK = false;
+                }
+            
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see there are no records
+            Assert.IsTrue(OK);
+        }
     }
+
 }
