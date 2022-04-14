@@ -32,7 +32,7 @@ namespace ClassLibrary
             }
         }
         private double mStudentDiscountPercentage;
-        public double StudnetDiscountPercentage
+        public double StudentDiscountPercentage
         {
             get
             {
@@ -61,7 +61,7 @@ namespace ClassLibrary
 
 
         private Int32 mCustomerID;
-        public Int32 CustomerID 
+        public Int32 CustomerID
         {
             get
             {
@@ -116,7 +116,7 @@ namespace ClassLibrary
                 Error = Error + "The Customer Name may not be blank: ";
             }
             //if the cutsomer name is greater than 20 characters
-              if(customerName.Length > 20)
+            if (customerName.Length > 50)
             {
                 //recored the error
                 Error = Error + "The Customer Name must be less than 20 characters: ";

@@ -34,7 +34,7 @@ namespace Testing1
             TestItem.CustomerID = 1;
             TestItem.CustomerName = "Jake John";
             TestItem.CustomerDOB = DateTime.Now.Date;
-            TestItem.StudnetDiscountPercentage = 1.5000;
+            TestItem.StudentDiscountPercentage = 1.5000;
             //Add the item to the test list
             TestList.Add(TestItem);
             //Assign the data to the property
@@ -55,7 +55,7 @@ namespace Testing1
             TestCustomer.CustomerID = 1;
             TestCustomer.CustomerName = "Jake John";
             TestCustomer.CustomerDOB = DateTime.Now.Date;
-            TestCustomer.StudnetDiscountPercentage = 1.5000;
+            TestCustomer.StudentDiscountPercentage = 1.5000;
             //Assign theh data to the property 
             AllCustomers.ThisCustomer = TestCustomer;
             //Test to see that the two values are the same
@@ -77,7 +77,7 @@ namespace Testing1
             TestItem.CustomerID = 1;
             TestItem.CustomerName = "Jake John";
             TestItem.CustomerDOB = DateTime.Now.Date;
-            TestItem.StudnetDiscountPercentage = 1.5000;
+            TestItem.StudentDiscountPercentage = 1.5000;
             //Add the item to the test list
             TestList.Add(TestItem);
             //Assign the data to the property
@@ -100,7 +100,7 @@ namespace Testing1
             TestItem.CustomerID = 6;
             TestItem.CustomerName = " Some Name";
             TestItem.CustomerDOB = DateTime.Now.Date;
-            TestItem.StudnetDiscountPercentage = 1.5000;
+            TestItem.StudentDiscountPercentage = 1.5000;
             //set thisCustomer to the test data
             AllCustomers.ThisCustomer = TestItem;
             //add the recored
@@ -126,7 +126,7 @@ namespace Testing1
             TestItem.IsStudent = true;
             TestItem.CustomerName = "A Name";
             TestItem.CustomerDOB = DateTime.Now.Date;
-            TestItem.StudnetDiscountPercentage = 1.5000;
+            TestItem.StudentDiscountPercentage = 1.5000;
             //set this Customer to the test data
             AllCustomers.ThisCustomer = TestItem;
             //add the recored
@@ -137,7 +137,7 @@ namespace Testing1
             TestItem.IsStudent = false;
             TestItem.CustomerName = "B Name";
             TestItem.CustomerDOB = DateTime.Now.Date;
-            TestItem.StudnetDiscountPercentage = 0.000;
+            TestItem.StudentDiscountPercentage = 0.000;
             //seth teh recored based on the new test data 
             AllCustomers.ThisCustomer = TestItem;
             //update the recored
@@ -163,7 +163,7 @@ namespace Testing1
             TestItem.CustomerID = 1;
             TestItem.CustomerName = " Some Name";
             TestItem.CustomerDOB = DateTime.Now.Date;
-            TestItem.StudnetDiscountPercentage = 1.5000;
+            TestItem.StudentDiscountPercentage = 1.5000;
             //set htisCustomer to the test data
             AllCustomers.ThisCustomer = TestItem;
             //add the recored
@@ -178,6 +178,58 @@ namespace Testing1
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             //test to see that the recored was not found
             Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByCustomerNameMethodOK()
+        {
+            //create an inastnec of the class containing the unfiltered results
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string (should return all recoreds)
+            FilteredCustomers.ReportByCustomerName("");
+            //teat to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+        [TestMethod]
+        public void ReportByCustomerNameNoneFound()
+        {
+            //craete an instance of the filterd data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a customer name that does not exist
+            FilteredCustomers.ReportByCustomerName("xxxxxx xxxxx");
+            //test to see that there are no recoreds
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+        [TestMethod]
+        public void ReportByCustomerNameTestDataFound()
+        {
+            //create an instnce of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a customer name that does not exist 
+            FilteredCustomers.ReportByCustomerName("yyy yyyy");
+            //check that the correct number of recored are found
+            if (FilteredCustomers.Count == 2)
+            {
+                //check that the first recored is ID 15
+                if (FilteredCustomers.CustomerList[0].CustomerID != 15)
+                {
+                    OK = false;
+                }
+                //check that the first recored is ID 16
+                if (FilteredCustomers.CustomerList[1].CustomerID != 16)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no recoreds
+            Assert.IsTrue(OK);
         }
 
 

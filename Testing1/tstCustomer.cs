@@ -49,8 +49,8 @@ namespace Testing1
             //To create an instance of the class 
             clsCustomer Customer = new clsCustomer();
             double TestData = 1.5;
-            Customer.StudnetDiscountPercentage = TestData;
-            Assert.AreEqual(Customer.StudnetDiscountPercentage, TestData);
+            Customer.StudentDiscountPercentage = TestData;
+            Assert.AreEqual(Customer.StudentDiscountPercentage, TestData);
 
         }
         [TestMethod]
@@ -142,7 +142,7 @@ namespace Testing1
 
             Found = Customer.Find(CustomerID);
 
-            if (Customer.StudnetDiscountPercentage != Convert.ToDouble("1.5"))
+            if (Customer.StudentDiscountPercentage != Convert.ToDouble("1.5"))
             {
                 OK = false;
             }
@@ -159,11 +159,11 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerID =5;
+            Int32 CustomerID = 5;
 
             Found = Customer.Find(CustomerID);
 
-            if (Customer.CustomerDOB != Convert.ToDateTime("05/03/1998")) 
+            if (Customer.CustomerDOB != Convert.ToDateTime("05/03/1998"))
             {
                 OK = false;
             }
@@ -300,7 +300,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string CustomerName = "aaaaaaaaaaaaaaaaaaaaaa";
+            string CustomerName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             //invoke the method
             Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
             //test to see that the result is correct
@@ -525,7 +525,7 @@ namespace Testing1
         [TestMethod]
         public void StudnetDiscountPercentageInvalidData()
         {
-            
+
 
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();

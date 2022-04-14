@@ -17,12 +17,12 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(Customer.CustomerID);
         Response.Write(Customer.CustomerName);
         Response.Write(Customer.CustomerDOB);
-        Response.Write(Customer.StudnetDiscountPercentage);
+        Response.Write(Customer.StudentDiscountPercentage);
         Response.Write(Customer.IsStudent);
-        
-     
-        
+
+
+
 
     }
-   
+
 }
