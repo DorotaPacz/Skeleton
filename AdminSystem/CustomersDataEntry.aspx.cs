@@ -15,7 +15,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //get the number of the customer to be processed
         CustomerID = Convert.ToInt32(Session["CustomerID"]);
-        if(IsPostBack == false)
+        if (IsPostBack == false)
         {
             // if this is not a new recored
             if (CustomerID != -1)
@@ -36,14 +36,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtCustomerID.Text = CustomerL.ThisCustomer.CustomerID.ToString();
         txtCustomerName.Text = CustomerL.ThisCustomer.CustomerName;
         txtCustomerDOB.Text = CustomerL.ThisCustomer.CustomerDOB.ToString();
-        txtStudentDiscountPercentage.Text = CustomerL.ThisCustomer.StudnetDiscountPercentage.ToString();
+        txtStudentDiscountPercentage.Text = CustomerL.ThisCustomer.StudentDiscountPercentage.ToString();
         chkIsStudnet.Checked = CustomerL.ThisCustomer.IsStudent;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
 
-  
+
 
 
 
@@ -63,25 +63,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Variable to store any error message 
         string Error = "";
         //Validate the data 
-        Error = Customer.Valid( CustomerName, CustomerDOB, StudnetDiscountPercentage);
+        Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
         if (Error == "")
         {
             //Capture the Customer Id 
-             Customer.CustomerID = Convert.ToInt32(CustomerID);
+            Customer.CustomerID = Convert.ToInt32(CustomerID);
             //Capture the Customer name 
             Customer.CustomerName = CustomerName;
             //Capture the customer DOB
             Customer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
             //capture the student disscount percentage
-            Customer.StudnetDiscountPercentage = Convert.ToDouble(StudnetDiscountPercentage);
+            Customer.StudentDiscountPercentage = Convert.ToDouble(StudnetDiscountPercentage);
             //Capture the is studnet 
             Customer.IsStudent = Convert.ToBoolean(IsStudent);
             //create a new instance if teh Customer collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
 
-            
+
             //if this is a new recored i.e. CustomerID = -1 then add the data
-           if (CustomerID == -1)
+            if (CustomerID == -1)
             {
                 //seth the ThisCustomer property
                 CustomerList.ThisCustomer = Customer;
@@ -125,14 +125,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //find the record
         Found = Customer.Find(CustomerID);
         //if found
-        if(Found == true)
+        if (Found == true)
         {
             //display the values of the properties in the form
-            
+
             txtCustomerName.Text = Customer.CustomerName;
             txtCustomerDOB.Text = Customer.CustomerDOB.ToString();
-            txtStudentDiscountPercentage.Text = Customer.StudnetDiscountPercentage.ToString();
-           
+            txtStudentDiscountPercentage.Text = Customer.StudentDiscountPercentage.ToString();
+
 
         }
     }
