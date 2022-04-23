@@ -8,6 +8,7 @@ namespace ClassLibrary
 
 
         private List<clsOrder> mOrderList = new List<clsOrder>();
+        private clsOrder mThisOrder = new clsOrder();
 
         public clsOrderCollection()
         {
@@ -53,6 +54,28 @@ namespace ClassLibrary
                 //worry later
             }
         }
-        public clsOrder ThisOrder { get; set; }
+        public clsOrder ThisOrder 
+        { 
+            get
+            {
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the database based on the values of ThisOrder
+            //connect to db
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@TotalPrice", mThisOrder.TotalPrice);
+            DB.AddParameter("@Date", mThisOrder.Date);
+            DB.AddParameter("@isFulfilled", mThisOrder.IsFulfilled);
+
+            return DB.Execute("sproc_tblOrder_Insert");
+        }
     }
 }

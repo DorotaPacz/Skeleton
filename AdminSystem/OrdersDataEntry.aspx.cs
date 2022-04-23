@@ -52,8 +52,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Session["OrderID"] = anOrder;
             Session["Orderline"] = anOrderline;
 
+            //collection object 
+            clsOrderCollection OrderCollection = new clsOrderCollection();
+            OrderCollection.ThisOrder = anOrder;
+            OrderCollection.Add();
+
             // navigate to the viewer page
-            Response.Redirect("OrdersViewer.aspx");
+            Response.Redirect("OrdersList.aspx");
         }
         else
         {
