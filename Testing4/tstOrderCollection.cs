@@ -79,7 +79,7 @@ namespace Testing4
             clsOrder anOrder = new clsOrder();
 
             //var to store the primary key
-            Int32 PrimaryKey = 0;
+            Int32 PrimaryKey = 123;
 
             //set its properties
             anOrder.ID = 125;
