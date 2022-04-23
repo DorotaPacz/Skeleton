@@ -35,14 +35,6 @@ namespace Testing4
             Assert.AreEqual(aCollection.OrderList, testList);
         }
 
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsOrderCollection aCollection = new clsOrderCollection();
-            Int32 SomeCount = 0;
-            aCollection.Count = SomeCount;
-            Assert.AreEqual(aCollection.Count, SomeCount);
-        }
 
         [TestMethod]
         public void ThisOrderPropertyOK()
