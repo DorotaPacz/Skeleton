@@ -60,5 +60,22 @@ namespace Testing4
 
         }
 
+        [TestMethod]
+        public void ListAndCountOK()
+        {
+            clsOrderCollection aCollection = new clsOrderCollection();
+            List<clsOrder> testList = new List<clsOrder>();
+            clsOrder anOrder = new clsOrder();
+            anOrder.ID = 15;
+            anOrder.Date = DateTime.Now.Date;
+            anOrder.IsFulfilled = false;
+            anOrder.TotalPrice = 19.99f;
+            testList.Add(anOrder);
+            aCollection.OrderList = testList;
+
+            Assert.AreEqual(aCollection.Count, testList.Count);
+
+        }
+
     }
 }
