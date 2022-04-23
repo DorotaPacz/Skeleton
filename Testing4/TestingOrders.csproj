@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tstOrder.cs" />
     <Compile Include="tstOrderLine.cs" />
+    <Compile Include="tstOrderCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
