@@ -177,5 +177,18 @@ namespace Testing4
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByIsFulfilledMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsOrderCollection aCollection = new clsOrderCollection();
+            //create an instance of the filtered data
+            clsOrderCollection FilteredCollection = new clsOrderCollection();
+            //apply a blank string (should return all records);
+            FilteredCollection.ReportByIsFulfilled("");
+            Assert.AreEqual(aCollection.Count, FilteredCollection.Count);
+
+        }
+
     }
 }
