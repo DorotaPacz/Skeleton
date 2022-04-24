@@ -34,17 +34,17 @@ namespace Testing5
             //create an instance of the class we want to create
             clsSuppliers AnSuppliers = new clsSuppliers();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            Int32 TestData = 2;
             //assign the data to the property
-            AnSuppliers.SuppliersId = TestData;
+            AnSuppliers.SupplierId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnSuppliers.SuppliersId, TestData);
+            Assert.AreEqual(AnSuppliers.SupplierId, TestData);
         }
         [TestMethod]
         public void SupplierContactNoPropertyOk()
         {
             clsSuppliers AnSuppliers = new clsSuppliers();
-            Int64 TestData = 07099772331;
+            Int64 TestData = 77656512;
             AnSuppliers.SupplierContactNo = TestData;
             Assert.AreEqual(AnSuppliers.SupplierContactNo, TestData);
 
@@ -53,7 +53,7 @@ namespace Testing5
         public void SupplierNameOK()
         {
             clsSuppliers AnSuppliers = new clsSuppliers();
-            string TestData = "MIK Rescue";
+            string TestData = "manny and co";
             AnSuppliers.SupplierName = TestData;
             Assert.AreEqual(AnSuppliers.SupplierName, TestData);
         }
@@ -61,7 +61,7 @@ namespace Testing5
         public void SupplierEmailOK()
         {
             clsSuppliers AnSuppliers = new clsSuppliers();
-            string TestData = "supplier@mail.com";
+            string TestData = "supplier2@email.com";
             AnSuppliers.SupplierEmail = TestData;
             Assert.AreEqual(AnSuppliers.SupplierEmail, TestData);
 
@@ -70,7 +70,7 @@ namespace Testing5
         public void SupplierAddressOK()
         {
             clsSuppliers AnSuppliers = new clsSuppliers();
-            string TestData = "2 manny road nigeria";
+            string TestData = "6 manny land";
             AnSuppliers.SupplierAddress = TestData;
             Assert.AreEqual(AnSuppliers.SupplierAddress, TestData);
         }
@@ -82,9 +82,9 @@ namespace Testing5
             //Boolean varaible to store the result of the validation
             Boolean Found = false;
             //create some test data to use with method
-            Int32 SuppliersId = 21;
+            Int32 SupplierId = 2;
             //invoke the method
-            Found = AnSuppliers.Find(SuppliersId);
+            Found = AnSuppliers.Find(SupplierId);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
@@ -98,11 +98,11 @@ namespace Testing5
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SuppliersId = 21;
+            Int32 SupplierId = 2;
             //invoke the method
-            Found = AnSuppliers.Find(SuppliersId);
+            Found = AnSuppliers.Find(SupplierId);
             //check the address no
-            if (AnSuppliers.SuppliersId != 21)
+            if (AnSuppliers.SupplierId != 2)
             {
                 OK = false;
             }
@@ -115,9 +115,9 @@ namespace Testing5
             clsSuppliers AnSuppliers = new clsSuppliers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 2;
             Found = AnSuppliers.Find(SupplierId);
-            if (AnSuppliers.SupplierName != "Manny LTD")
+            if (AnSuppliers.SupplierName != "manny and co")
             {
                 OK = false;
             }
@@ -129,9 +129,9 @@ namespace Testing5
             clsSuppliers AnSuppliers = new clsSuppliers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 2;
             Found = AnSuppliers.Find(SupplierId);
-            if (AnSuppliers.SupplierEmail != "supplier@mail.com")
+            if (AnSuppliers.SupplierEmail != "supplier2@email.com")
             {
                 OK = false;
             }
@@ -143,9 +143,9 @@ namespace Testing5
             clsSuppliers AnSuppliers = new clsSuppliers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 2;
             Found = AnSuppliers.Find(SupplierId);
-            if (AnSuppliers.SupplierAddress != "2 manny road nigeria")
+            if (AnSuppliers.SupplierAddress != "2 manny land")
             {
                 OK = false;
             }
@@ -157,7 +157,7 @@ namespace Testing5
             clsSuppliers AnSuppliers = new clsSuppliers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 2;
             Found = AnSuppliers.Find(SupplierId);
             if (AnSuppliers.SupplierContactNo != 07099772331)
             {
@@ -171,7 +171,7 @@ namespace Testing5
             clsSuppliers AnSuppliers = new clsSuppliers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 2;
             Found = AnSuppliers.Find(SupplierId);
             if (AnSuppliers.SupplierAvailable != true)
             {
