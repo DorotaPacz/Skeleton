@@ -141,5 +141,41 @@ namespace Testing4
             Assert.AreEqual(aCollection.ThisOrder, anOrder);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection aCollection = new clsOrderCollection();
+
+            //create the item of test data
+            clsOrder anOrder = new clsOrder();
+
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+
+            //set its properties
+
+            anOrder.Date = DateTime.Now.Date;
+            anOrder.IsFulfilled = false;
+            anOrder.TotalPrice = 19.99f;
+
+            aCollection.ThisOrder = anOrder;
+
+            //add the record
+            PrimaryKey = aCollection.Add();
+
+            //set the primary key of the test data
+            anOrder.ID = PrimaryKey;
+
+            //find the record
+            aCollection.ThisOrder.Find(PrimaryKey);
+
+            //delete the record
+            aCollection.Delete();
+            Boolean Found = aCollection.ThisOrder.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
+        }
+
     }
 }
