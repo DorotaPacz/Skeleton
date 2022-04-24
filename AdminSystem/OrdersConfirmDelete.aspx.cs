@@ -13,7 +13,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        ID = Convert.ToInt32(Session["ID"]);
     }
 
     protected void btnYes_Click(object sender, EventArgs e)
