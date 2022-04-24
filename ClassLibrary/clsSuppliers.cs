@@ -17,19 +17,19 @@ namespace ClassLibrary
             }
         }
         //addressNo private member variable
-        private Int32 mSuppliersId;
+        private Int32 mSupplierId;
 
-        public int SuppliersId
+        public int SupplierId
         {
             get
             {
                 //this line of code sends data out of the property
-                return mSuppliersId;
+                return mSupplierId;
             }
             set
             {
                 //this line of code allows data into the property
-                mSuppliersId = value;
+                mSupplierId = value;
             }
         }
         
@@ -98,7 +98,7 @@ namespace ClassLibrary
             if (DB.Count == 1)
             {
                 //copy the data from the database to the private data members
-                mSuppliersId = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierId"]);
+                mSupplierId = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierId"]);
                 mSupplierContactNo = Convert.ToInt64(DB.DataTable.Rows[0]["SupplierContactNo"]);
                 mSupplierAddress = Convert.ToString(DB.DataTable.Rows[0]["SupplierAddress"]);
                 mSupplierEmail = Convert.ToString(DB.DataTable.Rows[0]["SupplierEmail"]);
