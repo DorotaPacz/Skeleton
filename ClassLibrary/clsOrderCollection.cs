@@ -17,6 +17,7 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrder_select_all");
             RecordCount = DB.Count;
+            PopulateArray(DB);
 
             while(Index < RecordCount)
             {
@@ -103,5 +104,41 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_Delete");
         }
+
+        public void ReportByDate(string v)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            if(v != "")
+            {
+                DB.AddParameter("@Date", Convert.ToDateTime(v));
+            }
+     
+         
+            DB.Execute("sproc_tblOrder_FilterByDate");
+            PopulateArray(DB);
+
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mOrderList = new List<clsOrder>();
+
+            while(Index < RecordCount)
+            {
+                clsOrder anOrder = new clsOrder();
+                anOrder.ID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                anOrder.IsFulfilled = Convert.ToBoolean(DB.DataTable.Rows[Index]["isFulfilled"]);
+                anOrder.TotalPrice = Convert.ToDouble(DB.DataTable.Rows[Index]["TotalPrice"]);
+                anOrder.Date = Convert.ToDateTime(DB.DataTable.Rows[Index]["Date"]);
+                mOrderList.Add(anOrder);
+                Index++;
+            }
+        }
+
+
     }
 }

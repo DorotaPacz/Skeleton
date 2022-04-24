@@ -177,5 +177,48 @@ namespace Testing4
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByDateMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsOrderCollection aCollection = new clsOrderCollection();
+            //create an instance of the filtered data
+            clsOrderCollection FilteredCollection = new clsOrderCollection();
+            //apply a blank string (should return all records);
+            FilteredCollection.ReportByDate("");
+            Assert.AreEqual(aCollection.Count, FilteredCollection.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByDateNoneFound()
+        {
+            //create an instance of the filtered data
+            clsOrderCollection FilteredCollection = new clsOrderCollection();
+
+            FilteredCollection.ReportByDate("23/11/2030");
+            Assert.AreEqual(0, FilteredCollection.Count);
+        }
+
+        [TestMethod]
+        public void ReportByDateTestDataFound()
+        {
+            clsOrderCollection aCollection = new clsOrderCollection();
+            Boolean OK = true;
+            aCollection.ReportByDate("24/04/2022");
+
+            if(aCollection.OrderList[0].ID != 13)
+            {
+                OK = false;
+            }
+
+            if(aCollection.OrderList[1].ID != 14)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
     }
 }
