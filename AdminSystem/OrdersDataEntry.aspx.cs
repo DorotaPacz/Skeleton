@@ -8,8 +8,38 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+
+
+    Int32 ID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the ID of the Order to process
+        ID = Convert.ToInt32(Session["ID"]);
+        if(IsPostBack == false)
+        {
+            //if this is not a new record
+            if(ID != -1)
+            {
+                DisplayOrder();
+            }
+        }
+
+    }
+
+    void DisplayOrder()
+    {
+        //create an instance of OrderCollection
+        clsOrderCollection aCollection = new clsOrderCollection();
+
+        //find the record to update
+        aCollection.ThisOrder.Find(ID);
+
+        // display the data for this record
+        txtOrderID.Text = aCollection.ThisOrder.ID.ToString();
+        txtDate.Text = aCollection.ThisOrder.Date.ToString();
+        txtTotalPrice.Text = aCollection.ThisOrder.TotalPrice.ToString();
+        chkFulfilled.Checked = aCollection.ThisOrder.IsFulfilled;
 
     }
 
@@ -52,10 +82,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Session["OrderID"] = anOrder;
             Session["Orderline"] = anOrderline;
 
-            //collection object 
+            //collection object  add update delete methods
             clsOrderCollection OrderCollection = new clsOrderCollection();
-            OrderCollection.ThisOrder = anOrder;
-            OrderCollection.Add();
+
+            if(ID == -1)
+            {
+                OrderCollection.ThisOrder = anOrder;
+                OrderCollection.Add();
+            }
+            else
+            {
+                //find the record to update 
+                OrderCollection.ThisOrder.Find(ID);
+                OrderCollection.ThisOrder = anOrder;
+                OrderCollection.Update();
+            }
+
 
             // navigate to the viewer page
             Response.Redirect("OrdersList.aspx");
