@@ -77,5 +77,20 @@ namespace ClassLibrary
 
             return DB.Execute("sproc_tblOrder_Insert");
         }
+
+        public void Update()
+        {
+            //update an existing record based on the values of ThisOrder
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@ID", mThisOrder.ID);
+            DB.AddParameter("@TotalPrice", mThisOrder.TotalPrice);
+            DB.AddParameter("@Date", mThisOrder.Date);
+            DB.AddParameter("@isFulfilled", mThisOrder.IsFulfilled);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Update");
+        }
     }
 }
