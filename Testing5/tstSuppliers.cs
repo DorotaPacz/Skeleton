@@ -6,7 +6,13 @@ namespace Testing5
 {
     [TestClass]
     public class tstSuppliers
+
     {
+        string SupplierName = "manny and co";
+        string SupplierEmail = "Supplier2@email.com";
+        string SupplierAddress = "2 manny land";
+        string SupplierContactNo = "07099772331";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -70,7 +76,7 @@ namespace Testing5
         public void SupplierAddressOK()
         {
             clsSuppliers AnSuppliers = new clsSuppliers();
-            string TestData = "6 manny land";
+            string TestData = "2 manny land";
             AnSuppliers.SupplierAddress = TestData;
             Assert.AreEqual(AnSuppliers.SupplierAddress, TestData);
         }
@@ -178,7 +184,500 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(OK);
+
         }
 
-     }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+            string Error = "";
+            string Valid(string SupplierName, string SupplierAddress, string SupplierContactNo, string SupplierEmail)
+            {
+                return "";
+            }
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SupplierNameMinLessOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContacNo)
+            {
+                String Error = "";
+                if (SupplierName.Length == 0)
+                {
+                    Error = Error + "The house may not work still: ";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierNameMin()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierName.Length == 1)
+                {
+                    Error = Error + "m";
+                }
+                return Error;
+            }
+
+        }
+        [TestMethod]
+        public void SupplierNameMinPlusOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierName.Length == 2)
+                {
+                    Error = Error + "ma";
+                }
+                return Error;
+            }
+
+        }
+        [TestMethod]
+        public void SupplierNameMaxlessOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierName.Length == 49)
+                {
+                    Error = Error + "manny and coooooooooooooooooooooooooooooooooooooo";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierNameMax()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierName.Length == 50)
+                {
+                    Error = Error + "manny and coooooooooooooooooooooooooooooooooo.com";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierNameMaxPlusOne()
+        {
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierName.Length == 0)
+                {
+                    Error = Error + "This name may not be blank ";
+                }
+                if (SupplierName.Length > 50)
+                {
+                    Error = Error + "This name must be less than 50 characters : ";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierNameMid()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierName.Length == 25)
+                {
+                    Error = Error + "mmmmmmmmmmmmmmmmmmmmmmmmm";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierNameExtremeMax()
+        {
+            clsSuppliers AnSupplier = new clsSuppliers();
+            String Error = "";
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(500, 'a');
+            Error = AnSupplier.Valid(SupplierName, SupplierEmail, SupplierAddress, SupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        [TestMethod]
+        public void SupplierEmailMinLessOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContacNo)
+            {
+                String Error = "";
+                if (SupplierEmail.Length == 0)
+                {
+                    Error = Error + "Supplier2@email.com ";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierEmailMin()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierEmail.Length == 1)
+                {
+                    Error = Error + "s";
+                }
+                return Error;
+            }
+
+        }
+        [TestMethod]
+        public void SupplierEmailMinPlusOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierEmail.Length == 2)
+                {
+                    Error = Error + "su";
+                }
+                return Error;
+            }
+
+        }
+        [TestMethod]
+        public void SupplierEmailMaxlessOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierEmail.Length == 49)
+                {
+                    Error = Error + "manny and coooooooooooooooooooooooooooooooooooooo";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierEmailMax()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierEmail.Length == 50)
+                {
+                    Error = Error + "manny and coooooooooooooooooooooooooooooooooo.com";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierEmailMaxPlusOne()
+        {
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierEmail.Length == 0)
+                {
+                    Error = Error + "This name may not be blank ";
+                }
+                if (SupplierEmail.Length > 50)
+                {
+                    Error = Error + "This name must be less than 50 characters : ";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierEmailMid()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierEmail.Length == 25)
+                {
+                    Error = Error + "suppliersuppliersupl.comm";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierEmailExtremeMax()
+        {
+            clsSuppliers AnSupplier = new clsSuppliers();
+            String Error = "";
+            string SupplierEmail = "";
+            SupplierEmail = SupplierEmail.PadRight(500, 'a');
+            Error = AnSupplier.Valid(SupplierName, SupplierEmail, SupplierAddress, SupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        [TestMethod]
+        public void SupplierAddressMinLessOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContacNo)
+            {
+                String Error = "";
+                if (SupplierAddress.Length == 0)
+                {
+                    Error = Error + "manny land ";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierAddressMin()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierAddress.Length == 1)
+                {
+                    Error = Error + "m";
+                }
+                return Error;
+            }
+
+        }
+        [TestMethod]
+        public void SupplierAddressMinPlusOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierAddress.Length == 2)
+                {
+                    Error = Error + "ma";
+                }
+                return Error;
+            }
+
+        }
+        [TestMethod]
+        public void SupplierAddressMaxlessOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierAddress.Length == 49)
+                {
+                    Error = Error + "manny and coooooooooooooooooooooooooooooooooooooo";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierAddressMax()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierAddress.Length == 50)
+                {
+                    Error = Error + "manny and coooooooooooooooooooooooooooooooooo.com";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierAddressMaxPlusOne()
+        {
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierAddress.Length == 0)
+                {
+                    Error = Error + "This name may not be blank ";
+                }
+                if (SupplierAddress.Length > 50)
+                {
+                    Error = Error + "This name must be less than 50 characters : ";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierAddressMid()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierAddress.Length == 25)
+                {
+                    Error = Error + "suppliersuppliersupl.comm";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierAddressExtremeMax()
+        {
+            clsSuppliers AnSupplier = new clsSuppliers();
+            String Error = "";
+            string SupplierAddress = "";
+            SupplierAddress = SupplierAddress.PadRight(500, 'a');
+            Error = AnSupplier.Valid(SupplierName, SupplierEmail, SupplierAddress, SupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        [TestMethod]
+        public void SupplierContactNoMinLessOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContacNo)
+            {
+                String Error = "";
+                if (SupplierContactNo.Length == 0)
+                {
+                    Error = Error + "0887746648764 ";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierContactNoMin()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierContactNo.Length == 1)
+                {
+                    Error = Error + "0";
+                }
+                return Error;
+            }
+
+        }
+        [TestMethod]
+        public void SupplierContactNoMinPlusOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierContactNo.Length == 2)
+                {
+                    Error = Error + "+2";
+                }
+                return Error;
+            }
+
+        }
+        [TestMethod]
+        public void SupplierContactNoMaxlessOne()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierContactNo.Length == 49)
+                {
+                    Error = Error + "+2349887676534545";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierContactNoMax()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierContactNo.Length == 50)
+                {
+                    Error = Error + "0997865676456644 765467544578297556363737735 9888";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierContactNoMaxPlusOne()
+        {
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierContactNo.Length == 0)
+                {
+                    Error = Error + "This name may not be blank ";
+                }
+                if (SupplierContactNo.Length > 50)
+                {
+                    Error = Error + "This name must be less than 50 characters : ";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierContactNoMid()
+        {
+            clsSuppliers AnSuppliers = new clsSuppliers();
+
+            string Valid(string SupplierName, string SupplierEmail, string SupplierAddress, string SupplierContactNo)
+            {
+                String Error = "";
+                if (SupplierContactNo.Length == 25)
+                {
+                    Error = Error + "0086545353773663555223222";
+                }
+                return Error;
+            }
+        }
+        [TestMethod]
+        public void SupplierContactNoExtremeMax()
+        {
+            clsSuppliers AnSupplier = new clsSuppliers();
+            String Error = "";
+            string SupplierContactNo = "";
+            SupplierContactNo = SupplierContactNo.PadRight(500, 'a');
+            Error = AnSupplier.Valid(SupplierName, SupplierEmail, SupplierAddress, SupplierContactNo);
+            Assert.AreNotEqual(Error, "");
+        }
+    }
 }

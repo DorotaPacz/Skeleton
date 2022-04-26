@@ -115,6 +115,10 @@ namespace ClassLibrary
                 return false;
             }
         }
-            
+
+        public string Valid(string supplierName, string supplierAddress, string supplierContactNo, string supplierEmail)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
