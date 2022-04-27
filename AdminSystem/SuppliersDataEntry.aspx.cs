@@ -16,14 +16,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsSuppliers AnSuppliers = new clsSuppliers();
-        AnSuppliers.SupplierName = txtSupplierName.Text;
-        AnSuppliers.SupplierEmail = txtSupplierEmail.Text;
-        AnSuppliers.SupplierAddress = txtSupplierAddress.Text;
-        //AnSuppliers.SupplierContactNo = strSupplierContactNo.Text;
-        AnSuppliers.SupplierAvailable = chkSupplierAvailable.Checked;
-        Session["AnSuppliers"] = AnSuppliers;
+        string SupplierName = txtSupplierName.Text;
+        string SupplierEmail = txtSupplierEmail.Text;
+        string SupplierAddress = txtSupplierAddress.Text;
+        string SupplierContactNo = txtSupplierContactNo.Text;
+        string Error = "";
+        Error = AnSuppliers.Valid(SupplierName, SupplierEmail, SupplierAddress, SupplierContactNo);
+        if (Error == "")
+        {
+            AnSuppliers.SupplierName = SupplierName;
+            AnSuppliers.SupplierEmail = SupplierEmail;
+            AnSuppliers.SupplierAddress = SupplierAddress;
+            // AnSuppliers.SupplierContactNo = txtSupplierContactNo.Text;
+            // AnSuppliers.SupplierAvailable = chkSupplierAvailable.Checked;
+            Session["AnSuppliers"] = AnSuppliers;
             //navigate to the viewer page
-        Response.Redirect("SuppliersViewer.aspx");
+            Response.Redirect("SuppliersViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            iblError.Text = Error;
+        }
     }
 
 
@@ -39,9 +53,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
 
         txtSupplierName.Text = AnSuppliers.SupplierName;
-        //txtSupplierContactNo.= AnSuppliers.SuppliersContactNo.ToString;
+        //txtSupplierContactNo.Text= AnSuppliers.SupplierContactNo;
         txtSupplierEmail.Text = AnSuppliers.SupplierEmail;
         txtSupplierAddress.Text = AnSuppliers.SupplierAddress;
+
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
 
     }
 }

@@ -50,7 +50,7 @@ namespace Testing5
         public void SupplierContactNoPropertyOk()
         {
             clsSuppliers AnSuppliers = new clsSuppliers();
-            Int64 TestData = 77656512;
+            long TestData = 77656512;
             AnSuppliers.SupplierContactNo = TestData;
             Assert.AreEqual(AnSuppliers.SupplierContactNo, TestData);
 
