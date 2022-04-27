@@ -33,7 +33,7 @@ namespace ClassLibrary
             }
         }
         
-        public long SuppliersContactNo { get; set; }
+       // public long SuppliersContactNo { get; set; }
         private long mSupplierContactNo;
         public long SupplierContactNo
         {
