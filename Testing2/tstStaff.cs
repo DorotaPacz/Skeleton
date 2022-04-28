@@ -10,9 +10,9 @@ namespace Testing
        
         
             //good test data
-            string StaffName = "Amy Zing";
+            string StaffName = "Dorota Paczkowska";
             string StaffDateStart = DateTime.Now.Date.ToString();
-            string StaffSalary = "£45678.50";
+            string StaffSalary = "10800.0000";
             //create a variable to store the test date data
             DateTime TestDate;
             
@@ -38,7 +38,7 @@ namespace Testing
                 //create an instance of the class we want to create
                 clsStaff AStaff = new clsStaff();
                 //create some test data to assign to the property
-                string TestData = "Cindy Crawford";
+                string TestData = "Dorota Paczkowska";
                 //assign the data to the property
                 AStaff.StaffName = TestData; //description assign to test data 
                                              //test to see that the two values are the same
@@ -105,7 +105,7 @@ namespace Testing
                 //create boolean variable to store the results of the validation
                 Boolean Found = false;
                 //create test data to use with the method
-                Int32 StaffIdNo = 10;
+                Int32 StaffIdNo = 1;
                 //invoke the method
                 Found = AStaff.Find(StaffIdNo);
                 //test to see if result is true
@@ -122,11 +122,11 @@ namespace Testing
                 //create boolean variable to record if data is ok (assume it is)
                 Boolean OK = true;
                 //create test data to use with the method
-                Int32 StaffIdNo = 10;
+                Int32 StaffIdNo = 1;
                 //invoke the method
                 Found = AStaff.Find(StaffIdNo);
                 // check the Id number property
-                if (AStaff.IdNoOK != 10)
+                if (AStaff.IdNoOK != 1)
                 {
                     OK = false;
                 }
@@ -143,11 +143,11 @@ namespace Testing
                 //create boolean variable to record if data is ok (assume it is)
                 Boolean OK = true;
                 //create test data to use with the method
-                Int32 StaffIdNo = 10;
+                Int32 StaffIdNo = 1;
                 //invoke the method
                 Found = AStaff.Find(StaffIdNo);
                 // check the date property
-                if (AStaff.DateBegin != Convert.ToDateTime("05/03/2022"))
+                if (AStaff.DateBegin != Convert.ToDateTime("07/04/2022"))
                 {
                     OK = false;
                 }
@@ -165,11 +165,11 @@ namespace Testing
                 //create boolean variable to record if data is ok (assume it is)
                 Boolean OK = true;
                 //create test data to use with the method
-                Int32 StaffIdNo = 10;
+                Int32 StaffIdNo = 1;
                 //invoke the method
                 Found = AStaff.Find(StaffIdNo);
                 // check the date property
-                if (AStaff.StaffName != "Amy Zing")
+                if (AStaff.StaffName != "Dorota Paczkowska")
                 {
                     OK = false;
                 }
@@ -186,11 +186,11 @@ namespace Testing
                 //create boolean variable to record if data is ok (assume it is)
                 Boolean OK = true;
                 //create test data to use with the method
-                Int32 StaffIdNo = 10;
+                Int32 StaffIdNo = 1;
                 //invoke the method
                 Found = AStaff.Find(StaffIdNo);
                 // check the date property
-                if (AStaff.Salary != Convert.ToDouble("102030"))
+                if (AStaff.Salary != Convert.ToDouble("10800.0000"))
                 {
                     OK = false;
                 }
@@ -394,7 +394,7 @@ namespace Testing
             //invoke the method
             Error = AStaff.Valid(StaffName, StaffDateStart, StaffSalary);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
