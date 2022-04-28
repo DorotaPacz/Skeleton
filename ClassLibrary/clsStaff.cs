@@ -11,7 +11,7 @@ namespace ClassLibrary
         //private data member for the staff name property
         private String mStaffName;
         //private data member for the staff name property
-        private Double mSalary;
+        private double mSalary;
         //private data member for the staff name property
         private Boolean mIsAdmin;
 
@@ -109,7 +109,7 @@ namespace ClassLibrary
             String Error = "";
             //create temporary variable to store date values
             DateTime DateTemp;
-            Double StaffSalaryTemp;
+            double StaffSalaryTemp;
             //*****************************StaffName**********************************
             //if the staffName not equal 49
             if (staffName.Length == 0)
@@ -166,13 +166,14 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "The staffSalary was not a valid data type! Enter correct format (i.e. 12345.67)";
+                Error = Error + "The staffSalary was not a valid data type! Enter correct format!";
             }
             
             //return any error messages
             return Error;
+             
         }
-
+        
 
     }
 }
