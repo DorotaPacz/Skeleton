@@ -33,7 +33,7 @@ namespace StaffCollection
             TestItem.IdNoOK = 1;
             TestItem.StaffName = "Dorota Paczkowska";
             TestItem.DateBegin = DateTime.Now.Date;
-            TestItem.Salary = 12345.67;
+            TestItem.Salary = 10800;
 
             //add the item to the test list
             TestList.Add(TestItem);
@@ -53,10 +53,10 @@ namespace StaffCollection
             clsStaff TestStaff = new clsStaff();
             //set the properties of the text object
             TestStaff.IsAdmin = false;
-            TestStaff.IdNoOK = 12;
-            TestStaff.StaffName = "Sabrina Fox";
+            TestStaff.IdNoOK = 1;
+            TestStaff.StaffName = "Dorota Paczkowska";
             TestStaff.DateBegin = DateTime.Now.Date;
-            TestStaff.Salary = 12345.67;
+            TestStaff.Salary = 10800;
             //assign the data to the property
             AllStaff.ThisStaff = TestStaff;
             //test to see that the two values are the same 
@@ -75,9 +75,9 @@ namespace StaffCollection
             //set the properties of the text object
             TestItem.IsAdmin = false;
             TestItem.IdNoOK = 1;
-            TestItem.StaffName = "Sabrina Fox";
+            TestItem.StaffName = "Dorota Paczkowska";
             TestItem.DateBegin = DateTime.Now.Date;
-            TestItem.Salary = 12345.67;
+            TestItem.Salary = 10800;
             //add the item to the list
             TestList.Add(TestItem);
             //assign the data to the property
@@ -100,7 +100,7 @@ namespace StaffCollection
             TestItem.IdNoOK = 1;
             TestItem.StaffName = "Dorota Paczkowska";
             TestItem.DateBegin = DateTime.Now.Date;
-            TestItem.Salary = 12345.67;
+            TestItem.Salary = 10800;
             //set ThisStaff to the test data
             AllStaff.ThisStaff = TestItem;
             //add the record
@@ -127,7 +127,7 @@ namespace StaffCollection
             TestItem.IdNoOK = 1;
             TestItem.StaffName = "Dorota Paczkowska";
             TestItem.DateBegin = DateTime.Now.Date;
-            TestItem.Salary = 12345.67;
+            TestItem.Salary = 10800;
             //set ThisStaff to the test data
             AllStaff.ThisStaff = TestItem;
             //add the record
@@ -136,10 +136,10 @@ namespace StaffCollection
             TestItem.IdNoOK = PrimaryKey;
             //modify the test data
             TestItem.IsAdmin = false;
-            TestItem.IdNoOK = 5;
-            TestItem.StaffName = "Amy Winter";
+            TestItem.IdNoOK = 7;
+            TestItem.StaffName = "Daniel Olbrychski";
             TestItem.DateBegin = DateTime.Now.Date;
-            TestItem.Salary = 21345.67;
+            TestItem.Salary = 85000;
             //set the record based on the new test data
             AllStaff.ThisStaff = TestItem;
             //update the record
@@ -164,7 +164,7 @@ namespace StaffCollection
             TestItem.IdNoOK = 1;
             TestItem.StaffName = "Dorota Paczkowska";
             TestItem.DateBegin = DateTime.Now.Date;
-            TestItem.Salary = 12345.67;
+            TestItem.Salary = 10800;
             //set ThisStaff to the test data 
             AllStaff.ThisStaff = TestItem;
             //add the record
