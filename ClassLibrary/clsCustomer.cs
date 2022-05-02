@@ -115,21 +115,21 @@ namespace ClassLibrary
                 //record the  error 
                 Error = Error + "The Customer Name may not be blank: ";
             }
-            //if the cutsomer name is greater than 20 characters
+            //if the cutsomer name is greater than 50 characters
             if (customerName.Length > 50)
             {
                 //recored the error
-                Error = Error + "The Customer Name must be less than 20 characters: ";
+                Error = Error + "The Customer Name must be less than 50 characters: ";
             }
             try
             {
                 //copy the CustomerBOD value to the DateTemp var
                 DateTemp = Convert.ToDateTime(customerDOB);
-                if (DateTemp < DateTime.Now.Date)
-                {
-                    //recored he error
-                    Error = Error + "The date cannot be in the past: ";
-                }
+                //if (DateTemp < DateTime.Now.Date)
+                //{
+                //    //recored he error
+                //    Error = Error + "The date cannot be in the past: ";
+                //}
                 //check to see if the date is greater than today's date
                 if (DateTemp > DateTime.Now.Date)
                 {

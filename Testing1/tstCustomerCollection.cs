@@ -214,12 +214,12 @@ namespace Testing1
             if (FilteredCustomers.Count == 2)
             {
                 //check that the first recored is ID 15
-                if (FilteredCustomers.CustomerList[0].CustomerID != 15)
+                if (FilteredCustomers.CustomerList[0].CustomerID != 271)
                 {
                     OK = false;
                 }
                 //check that the first recored is ID 16
-                if (FilteredCustomers.CustomerList[1].CustomerID != 16)
+                if (FilteredCustomers.CustomerList[1].CustomerID != 272)
                 {
                     OK = false;
                 }

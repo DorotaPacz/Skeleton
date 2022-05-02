@@ -42,11 +42,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-
-
-
-
-
         //creatr a new instance of clsCustomer
         clsCustomer Customer = new clsCustomer();
         //capture the Customer ID
@@ -58,7 +53,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Capture the student discount percentage
         string StudnetDiscountPercentage = txtStudentDiscountPercentage.Text;
         //Capture the Is Studnet 
-        string IsStudent = chkIsStudnet.Text;
+       // string IsStudent = chkIsStudnet.Text;
 
         //Variable to store any error message 
         string Error = "";
@@ -75,7 +70,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the student disscount percentage
             Customer.StudentDiscountPercentage = Convert.ToDouble(StudnetDiscountPercentage);
             //Capture the is studnet 
-            Customer.IsStudent = Convert.ToBoolean(IsStudent);
+            //Customer.IsStudent = Convert.ToBoolean(IsStudent);
+            Customer.IsStudent = chkIsStudnet.Checked;
             //create a new instance if teh Customer collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
 
