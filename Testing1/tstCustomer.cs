@@ -509,20 +509,6 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void StudnetDiscountPercentageMax()
-        {
-            //create an instance of the class we want to create
-            clsCustomer Customer = new clsCustomer();
-            //String var to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string StudnetDiscountPercentage = " -0.01";
-            //invoke the method
-            Error = Customer.Valid(CustomerName, CustomerDOB, StudnetDiscountPercentage);
-            //Test to see that the result is right
-            Assert.AreNotEqual(Error, "");
-        }
-        [TestMethod]
         public void StudnetDiscountPercentageInvalidData()
         {
 

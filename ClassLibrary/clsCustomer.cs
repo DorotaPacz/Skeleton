@@ -125,12 +125,7 @@ namespace ClassLibrary
             {
                 //copy the CustomerBOD value to the DateTemp var
                 DateTemp = Convert.ToDateTime(customerDOB);
-                //if (DateTemp < DateTime.Now.Date)
-                //{
-                //    //recored he error
-                //    Error = Error + "The date cannot be in the past: ";
-                //}
-                //check to see if the date is greater than today's date
+          
                 if (DateTemp > DateTime.Now.Date)
                 {
                     //recored the error
@@ -156,6 +151,7 @@ namespace ClassLibrary
                 {
                     Error = Error + "The StudnetDiscountPercentage cannot be smaller than 0";
                 }
+              
             }
             catch
             {
