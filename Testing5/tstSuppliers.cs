@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -678,6 +679,42 @@ namespace Testing5
             SupplierContactNo = SupplierContactNo.PadRight(500, 'a');
             Error = AnSupplier.Valid(SupplierName, SupplierEmail, SupplierAddress, SupplierContactNo);
             Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void Instance()
+        {
+            //create an instance of the class we want to create
+            clsSuppliersCollection AllSupplieres = new clsSuppliersCollection();
+            Assert.IsNotNull(AllSupplieres);
+        }
+        [TestMethod]
+        public void SupplierListOK()
+        {
+            clsSuppliersCollection AllSupplieres = new clsSuppliersCollection();
+            List<clsSuppliers> TestList = new List<clsSuppliers>();
+            clsSuppliers TestItem = new clsSuppliers();
+            TestItem.SupplierAvailable = true;
+            TestItem.SupplierAddress = "2 manny land";
+            TestItem.SupplierEmail = "Supplier2@email.com";
+            TestItem.SupplierId = 2;
+            TestItem.SupplierName = "manny and co";
+            TestList.Add(TestItem);
+            AllSupplieres.SuppliersList = TestList;
+            Assert.AreEqual(AllSupplieres.SuppliersList, TestList);
+        }
+        [TestMethod]
+        public void ThisSuppliersPropertyOK()
+        {
+            clsSuppliersCollection AllSupplieres = new clsSuppliersCollection();
+            clsSuppliers TestSuppliers = new clsSuppliers();
+            TestSuppliers.SupplierAvailable = true;
+            TestSuppliers.SupplierContactNo = 07099772331;
+            TestSuppliers.SupplierAddress = "2 manny land";
+            TestSuppliers.SupplierEmail = "Supplier2@email.com";
+            TestSuppliers.SupplierId = 2;
+            TestSuppliers.SupplierName = "manny and co";
+            AllSupplieres.ThisSuppliers = TestSuppliers;
+            Assert.AreEqual(AllSupplieres.ThisSuppliers, TestSuppliers);
         }
     }
 }
