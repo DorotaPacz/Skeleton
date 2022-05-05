@@ -716,5 +716,22 @@ namespace Testing5
             AllSupplieres.ThisSuppliers = TestSuppliers;
             Assert.AreEqual(AllSupplieres.ThisSuppliers, TestSuppliers);
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsSuppliersCollection AllSupplieres = new clsSuppliersCollection();
+            clsSuppliers TestItem = new clsSuppliers();
+            Int32 PrimaryKey = 0;
+            TestItem.SupplierAvailable = true;
+            TestItem.SupplierAddress = "2 many land";
+            TestItem.SupplierContactNo = 07099772331;
+            TestItem.SupplierEmail = "Supplier2@email.com";
+            TestItem.SupplierName = "manny and co";
+            TestItem.SupplierId = 2;
+            AllSupplieres.ThisSuppliers = TestItem;
+            PrimaryKey = AllSupplieres.Add();
+            TestItem.SupplierId = PrimaryKey;
+            Assert.AreEqual(AllSupplieres.ThisSuppliers, TestItem);
+        }
     }
 }
