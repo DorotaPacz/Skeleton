@@ -24,4 +24,11 @@ public partial class _1_List : System.Web.UI.Page
         IstSuppliersList.DataBind();
 
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["SupplierId"] = -1;
+        Response.Redirect("SupplierBookDataEntry.aspx");
+
+    }
 }

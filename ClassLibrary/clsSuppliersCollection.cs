@@ -7,6 +7,7 @@ namespace ClassLibrary
     {
         //private data member for the list
         List<clsSuppliers> mSuppliersList = new List<clsSuppliers>();
+        clsSuppliers mThisSuppliers = new clsSuppliers();
         public List<clsSuppliers> SuppliersList
         {
             get
@@ -28,6 +29,30 @@ namespace ClassLibrary
             {
             }
         }
-        public clsSuppliers ThisSuppliers { get; set; }
+        public clsSuppliers ThisSuppliers
+        {
+            get
+            {
+                return mThisSuppliers;
+            }
+            set
+            {
+                mThisSuppliers = value;
+            }
+        }
+
+        public int Add()
+        {
+            mThisSuppliers.SupplierId = 123;
+            return mThisSuppliers.SupplierId;
+
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("SupplierName", mThisSuppliers.SupplierName);
+            DB.AddParameter("SupplierEmail", mThisSuppliers.SupplierEmail);
+            DB.AddParameter("SupplierAddress", mThisSuppliers.SupplierAddress);
+            DB.AddParameter("SupplierAvailable", mThisSuppliers.SupplierAvailable);
+            return DB.Execute("sproc_tblSupplier_Insert");
+
+        }
     }
 }

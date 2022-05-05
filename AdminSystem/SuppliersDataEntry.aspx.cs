@@ -28,8 +28,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnSuppliers.SupplierEmail = SupplierEmail;
             AnSuppliers.SupplierAddress = SupplierAddress;
             // AnSuppliers.SupplierContactNo = txtSupplierContactNo.Text;
-            // AnSuppliers.SupplierAvailable = chkSupplierAvailable.Checked;
-            Session["AnSuppliers"] = AnSuppliers;
+             AnSuppliers.SupplierAvailable = chkSupplierAvailable.Checked;
+            clsSuppliersCollection SuppliersList = new clsSuppliersCollection();
+            SuppliersList.ThisSuppliers = AnSuppliers;
+            SuppliersList.Add();
+           // Session["AnSuppliers"] = AnSuppliers;
             //navigate to the viewer page
             Response.Redirect("SuppliersViewer.aspx");
         }
