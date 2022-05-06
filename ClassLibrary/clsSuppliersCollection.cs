@@ -68,11 +68,45 @@ namespace ClassLibrary
             DB.Execute("sproc_tblSuppliers_Update");
         }
 
+        public void ReportBySupplierName(object text)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@SupplierId", mThisSuppliers.SupplierId);
             DB.Execute("sproc_tblSuppliers_Delete");
         }
+
+        public void ReportBySupplierName(string SupplierName)
+
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierName", SupplierName);
+            DB.Execute("sproc_tblSuppliers_FilterBySupplierName");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mSuppliersList = new List<clsSuppliers>();
+            while (Index < RecordCount)
+            {
+                clsSuppliers AnSuppliers = new clsSuppliers();
+                AnSuppliers.SupplierAvailable = Convert.ToBoolean(DB.DataTable.Rows[Index]["SupplierAvailable"]);
+                AnSuppliers.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
+                AnSuppliers.SupplierAddress = Convert.ToString(DB.DataTable.Rows[Index]["SupplierAddress"]);
+                AnSuppliers.SupplierEmail = Convert.ToString(DB.DataTable.Rows[Index]["SupplierEmail"]);
+                AnSuppliers.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
+                AnSuppliers.SupplierContactNo = Convert.ToInt64(DB.DataTable.Rows[Index]["SupplierContactNo"]);
+                mSuppliersList.Add(AnSuppliers);
+                Index++;
+            }
+        }
+        
     }
 }

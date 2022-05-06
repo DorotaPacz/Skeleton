@@ -11,9 +11,17 @@
         <div>
             <asp:ListBox ID="IstSuppliersList" runat="server" Height="359px" Width="375px"></asp:ListBox>
         </div>
-        <p>
+        <p id="btnDelete">
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="height: 35px" Text="Add" />
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+        </p>
+        <p>
+            Enter Your SupplierName<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+            <asp:Button ID="btnClear" runat="server" OnClick="Button2_Click" Text="Clear" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
