@@ -8,9 +8,29 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StockItemNo;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StockItemNo = Convert.ToInt32(Session["StockItemNo"]);
+        if(IsPostBack == false)
+        {
+            if(StockItemNo != -1)
+            {
+                DisplayStock();
+            }
+        }
+    }
 
+    private void DisplayStock()
+    {
+        clsStockCollection Stock = new clsStockCollection();
+        Stock.ThisStock.Find(StockItemNo);
+        txtStockItemNo.Text = Stock.ThisStock.StockItemNo.ToString();
+        txtStockItemDesc.Text = Stock.ThisStock.StockItemDescription.ToString();
+        txtDateAdded.Text = Stock.ThisStock.DateAdded.ToString();
+        txtQuantityInStock.Text = Stock.ThisStock.QuantityInStock.ToString();
+        txtPrice.Text = Stock.ThisStock.Price.ToString();
+        chkAvailable.Checked = Stock.ThisStock.Available;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -29,14 +49,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if(Error == "")
         {
             //capture info
+            AStock.StockItemNo = StockItemNo;
             AStock.StockItemDescription = StockItemDescription;
             AStock.DateAdded = Convert.ToDateTime(DateAdded);
             AStock.Price = Convert.ToDouble(Price);
             AStock.QuantityInStock = Convert.ToInt32(QuantityInStock);
-            //store stock in session object
-            Session["AStock"] = AStock;
-            //redirect to the viewr page
-            Response.Write("StockViewer.aspx");
+            AStock.Available = chkAvailable.Checked;
+
+            clsStockCollection StockList = new clsStockCollection();
+            
+            if(StockItemNo == -1)
+            {
+                StockList.ThisStock = AStock;
+                StockList.Add();
+            }
+            else
+            {
+                StockList.ThisStock.Find(StockItemNo);
+                StockList.ThisStock = AStock;
+                StockList.Update();
+            }
+            Response.Redirect("AddressBoookList.aspx");
         }
         else
         {

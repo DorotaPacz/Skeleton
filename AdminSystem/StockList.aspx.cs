@@ -27,4 +27,25 @@ public partial class _1_List : System.Web.UI.Page
         lstStockList.DataBind();
     }
 
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Session["StockItemNo"] = -1;
+        Response.Redirect("StockDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 StockItemNo;
+        if(lstStockList.SelectedIndex != -1)
+        {
+            StockItemNo = Convert.ToInt32(lstStockList.SelectedValue);
+            Session["StockItemNo"] = StockItemNo;
+            Response.Redirect("StockDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to edit from the list";
+        }
+    }
 }

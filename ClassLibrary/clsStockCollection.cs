@@ -29,10 +29,38 @@ namespace ClassLibrary
             }
         }
 
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock 
+        {
+            get
+            {
+                return mThisStock;
+            }
+            set
+            {
+                mThisStock = value;
+            }
+        }
+
+        public int Add()
+        {
+            {
+                clsDataConnection DB = new clsDataConnection();
+
+                DB.AddParameter("@StockItemNo", mThisStock.StockItemNo);
+                DB.AddParameter("@StockItemDescription", mThisStock.StockItemDescription);
+                DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+                DB.AddParameter("@Price", mThisStock.Price);
+                DB.AddParameter("@QuantityInStock", mThisStock.QuantityInStock);
+                DB.AddParameter("@Available", mThisStock.Available);
+
+                return DB.Execute("sproc_tblStockItem_Insert");
+            }
+        }
 
         //private data member
         List<clsStock> mStockList = new List<clsStock>();
+
+        clsStock mThisStock = new clsStock();
 
         public clsStockCollection()
         {
@@ -59,6 +87,20 @@ namespace ClassLibrary
                 mStockList.Add(AStock);
                 Index++;
             }
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@StockItemNo", mThisStock.StockItemNo);
+            DB.AddParameter("@StockItemDescription", mThisStock.StockItemDescription);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@QuantityInStock", mThisStock.QuantityInStock);
+            DB.AddParameter("@Available", mThisStock.Available);
+
+            DB.Execute("sproc_tblStockItem_Update");
         }
     }
 }
