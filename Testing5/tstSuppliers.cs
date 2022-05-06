@@ -776,6 +776,46 @@ namespace Testing5
             AllSupplieres.Delete();
             Boolean Found = AllSupplieres.ThisSuppliers.Find(PrimaryKey);
             Assert.IsFalse(Found);
-        }    
-     }
+        }
+        [TestMethod]
+        public void ReportSupplierNameMethodOK()
+        {
+            clsSuppliersCollection AllSupplieres = new clsSuppliersCollection();
+            clsSuppliersCollection FilteredSupplieres = new clsSuppliersCollection();
+            FilteredSupplieres.ReportBySupplierName("");
+            Assert.AreEqual(AllSupplieres.Count, FilteredSupplieres.Count);
+        }
+        [TestMethod]
+        public void ReportBySupplierNameNoneFound()
+        {
+            clsSuppliersCollection FilteredSupplieres = new clsSuppliersCollection();
+            FilteredSupplieres.ReportBySupplierName("manny and co");
+            Assert.AreEqual(0, FilteredSupplieres.Count);
+
+        }
+        [TestMethod]
+        public void ReportBySupplierNameTestDataFound()
+        {
+            clsSuppliersCollection FilteredSupplieres = new clsSuppliersCollection();
+            Boolean OK = true;
+            FilteredSupplieres.ReportBySupplierName("manny and co");
+            if (FilteredSupplieres.Count == 2)
+            {
+                if (FilteredSupplieres.SuppliersList[0].SupplierId != 2)
+                {
+                    OK = false;
+                }
+                if (FilteredSupplieres.SuppliersList[1].SupplierId != 3)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
+    }
 }

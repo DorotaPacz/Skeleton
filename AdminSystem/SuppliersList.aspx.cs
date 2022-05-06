@@ -47,4 +47,43 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a supplier to edit form the list";
         }
     }
+
+  
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsSuppliersCollection Supplieres = new clsSuppliersCollection();
+       // Supplieres.ReportBySupplierName(txtFilter.Text);  
+        IstSuppliersList.DataSource = Supplieres.SuppliersList;
+        IstSuppliersList.DataValueField = "SupplierId";
+        IstSuppliersList.DataTextField = "SupplierName";
+        IstSuppliersList.DataBind();
+
+    }
+    protected void ButtonClear_Click(object sender, EventArgs e)
+    {
+        clsSuppliersCollection Supplieres = new clsSuppliersCollection();
+        Supplieres.ReportBySupplierName("");
+        //txtFilter.Text = "";
+        IstSuppliersList.DataSource = Supplieres.SuppliersList;
+        IstSuppliersList.DataValueField = "SupplierId";
+        IstSuppliersList.DataTextField = "SupplierName";
+        IstSuppliersList.DataBind();
+    }
+
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 SupplierId;
+        if (IstSuppliersList.SelectedIndex != -1)
+        {
+            SupplierId = Convert.ToInt32(IstSuppliersList.SelectedValue);
+            Session["SupplierId"] = SupplierId;
+            Response.Redirect("SupplierConfirmDelete.aspxx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from this list";
+        }
+    }
 }
