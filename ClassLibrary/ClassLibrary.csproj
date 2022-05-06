@@ -50,6 +50,7 @@
     <Compile Include="clsStaff.cs" />
     <Compile Include="clsStaffCollection.cs" />
     <Compile Include="clsStock.cs" />
+    <Compile Include="clsStockCollection.cs" />
     <Compile Include="clsSuppliers.cs" />
     <Compile Include="clsSuppliersCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
