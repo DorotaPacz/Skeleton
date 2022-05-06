@@ -28,7 +28,7 @@
         <br />
         <asp:CheckBox ID="chkSupplierAvailable" runat="server" Text="SupplierAvailable" width="184px" />
         <br />
-        <asp:Label ID="iblError" runat="server"></asp:Label>
+        <asp:Label ID="lblError" runat="server"></asp:Label>
         <br />
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
