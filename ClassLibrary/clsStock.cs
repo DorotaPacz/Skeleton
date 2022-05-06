@@ -132,9 +132,39 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-            //temporary variable
+            //temporary variables
             DateTime DateTemp;
-        
+            Double PriceTemp;
+            Int32 QuantityInStockTemp;
+
+            try
+            {
+                //if quantity is blank
+                if (quantityInStock.Length == 0)
+                {
+                    //record the error
+                    Error = Error + "The quantity may not be blank";
+                }
+
+                //if quantity is greater than 500
+                QuantityInStockTemp = Convert.ToInt32(quantityInStock);
+                if (QuantityInStockTemp > 10000)
+                {
+                    //record the error
+                    Error = Error + "There can not be more than 10000 items in stock";
+                }
+
+                //if quantity is below 0
+                if (QuantityInStockTemp < 0)
+                {
+                    //record the error
+                    Error = Error + "There can not be less than 0 items in stock";
+                }
+            }
+            catch
+            {
+                Error = Error + "Quantity is not valid";
+            }
             //if the StockItemDescription is blank
             if(stockItemDescription.Length == 0)
             {
@@ -147,14 +177,59 @@ namespace ClassLibrary
                 Error = Error + "The StockItemDescription must be less than 50 characters : ";
             }
 
-            //copy the dateAdded value to the DateTemp variable
-            DateTemp = Convert.ToDateTime(dateAdded);
-            if(DateTemp < DateTime.Now.Date)
+
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+
+                }
+            }
+            catch
             {
                 //record the error
-                Error = Error + "The date cannot be in the past : ";
+                Error = Error + "The date was not a valid date";
             }
-            //return any error message
+
+            //if price is blank
+            if (price.Length == 0)
+            {
+                //record the error
+                Error = Error + "The price cannot be blank! ";
+            }
+
+            //if price is less than 0
+            try
+            {
+                PriceTemp = Convert.ToDouble(price);
+                if (PriceTemp < 0)
+                {
+                    Error = Error + "The price cannot be smaller than zero! ";
+                }
+
+                PriceTemp = Convert.ToDouble(price);
+                if (PriceTemp > 10000000)
+                {
+                    Error = Error + "The price cannot be grater than 10M ";
+                }
+
+            }
+            catch
+            {
+                Error = Error + "The price is not valid";
+            }
+
+            //return any error messages
             return Error;
         }
     }
