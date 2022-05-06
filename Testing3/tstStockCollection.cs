@@ -73,6 +73,58 @@ namespace Testing3
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public void AddMethod()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+
+            TestItem.Available = true;
+            TestItem.StockItemDescription = "guitar";
+            TestItem.StockItemNo = 1;
+            TestItem.Price = 1;
+            TestItem.QuantityInStock = 1;
+            TestItem.DateAdded = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.StockItemNo = PrimaryKey;
+            AllStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+
+            TestItem.Available = true;
+            TestItem.StockItemDescription = "guitar";
+            TestItem.StockItemNo = 1;
+            TestItem.Price = 1;
+            TestItem.QuantityInStock = 1;
+            TestItem.DateAdded = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.StockItemNo = PrimaryKey;
+
+            TestItem.Available = false;
+            TestItem.StockItemDescription = "bass";
+            TestItem.StockItemNo = 5;
+            TestItem.Price = 11;
+            TestItem.QuantityInStock = 1123;
+            TestItem.DateAdded = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+            AllStock.Update();
+            AllStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
        
     }
 }
