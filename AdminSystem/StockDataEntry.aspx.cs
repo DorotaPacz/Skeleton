@@ -17,30 +17,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
+        //capture info
+        string StockItemDescription = txtStockItemDesc.Text;
+        string DateAdded = txtDateAdded.Text;
+        string Price = txtPrice.Text;
+        string QuantityInStock = txtQuantityInStock.Text;
+        string Error = "";
 
-        //capture stock item number
-        AStock.StockItemNo = Convert.ToInt32(txtStockItemNo.Text);
-
-        //capture stock item description
-        AStock.StockItemDescription = txtStockItemDesc.Text;
-
-        //capture stock item date added
-        AStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
-
-        //capture stock item price
-        AStock.Price = Convert.ToDouble(txtPrice.Text);
-
-        //capture stock item quantity
-        AStock.QuantityInStock = Convert.ToInt32(txtQuantityInStock.Text);
-
-        //capture stock item availability
-        AStock.Available = chkAvailable.Checked;
-
-        //store input in the session object
-        Session["AStock"] = AStock;
-
-        //navigate to the viewer page
-        Response.Redirect("StockViewer.aspx");
+        //validate
+        Error = AStock.Valid(StockItemDescription, DateAdded, Price, QuantityInStock);
+        if(Error == "")
+        {
+            //capture info
+            AStock.StockItemDescription = StockItemDescription;
+            AStock.DateAdded = Convert.ToDateTime(DateAdded);
+            AStock.Price = Convert.ToDouble(Price);
+            AStock.QuantityInStock = Convert.ToInt32(QuantityInStock);
+            //store stock in session object
+            Session["AStock"] = AStock;
+            //redirect to the viewr page
+            Response.Write("StockViewer.aspx");
+        }
+        else
+        {
+            //display error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
