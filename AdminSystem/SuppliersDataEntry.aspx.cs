@@ -8,8 +8,29 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SupplierId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        SupplierId = Convert.ToInt32(Session["SupplierId"]);
+        if (IsPostBack == false)
+        {
+            if (SupplierId != -1)
+            {
+                DisplaySuppliers();
+            }
+        }
+    }
+        public void DisplaySuppliers()
+        {
+            clsSuppliersCollection SuppliersBook = new clsSuppliersCollection();
+            SuppliersBook.ThisSuppliers.Find(SupplierId);
+            txtSupplierId.Text = SuppliersBook.ThisSuppliers.SupplierId.ToString();
+            txtSupplierEmail.Text = SuppliersBook.ThisSuppliers.SupplierEmail;
+            txtSupplierAddress.Text = SuppliersBook.ThisSuppliers.SupplierAddress;
+            txtSupplierName.Text = SuppliersBook.ThisSuppliers.SupplierName;
+            chkSupplierAvailable.Checked = SuppliersBook.ThisSuppliers.SupplierAvailable;
+            //txtSupplierContactNo.Text = SuppliersBook.ThisSuppliers.SupplierContactNo;
+
 
     }
 
@@ -30,22 +51,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // AnSuppliers.SupplierContactNo = txtSupplierContactNo.Text;
              AnSuppliers.SupplierAvailable = chkSupplierAvailable.Checked;
             clsSuppliersCollection SuppliersList = new clsSuppliersCollection();
-            SuppliersList.ThisSuppliers = AnSuppliers;
-            SuppliersList.Add();
-           // Session["AnSuppliers"] = AnSuppliers;
-            //navigate to the viewer page
+            if (SupplierId == -1)
+            {
+                SuppliersList.ThisSuppliers = AnSuppliers;
+                SuppliersList.Add();
+                // Session["AnSuppliers"] = AnSuppliers;
+                //navigate to the viewer page
+            }
+            else
+            {
+                SuppliersList.ThisSuppliers.Find(SupplierId);
+                SuppliersList.ThisSuppliers = AnSuppliers;
+                SuppliersList.Update();
+            }
             Response.Redirect("SuppliersViewer.aspx");
         }
         else
         {
             //display the error message
-            iblError.Text = Error;
+            lblError.Text = Error;
         }
     }
-
-
-
-
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsSuppliers AnSuppliers = new clsSuppliers();

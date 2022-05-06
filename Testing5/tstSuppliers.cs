@@ -733,5 +733,49 @@ namespace Testing5
             TestItem.SupplierId = PrimaryKey;
             Assert.AreEqual(AllSupplieres.ThisSuppliers, TestItem);
         }
-    }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsSuppliersCollection AllSupplieres = new clsSuppliersCollection();
+            clsSuppliers TestItem = new clsSuppliers();
+            Int32 PrimaryKey = 0;
+            TestItem.SupplierAvailable = true;
+            TestItem.SupplierAddress = "2 manny land";
+            TestItem.SupplierContactNo = 07099772331;
+            TestItem.SupplierEmail = "Supplier2@email.com";
+            TestItem.SupplierName = "manny and co";
+            AllSupplieres.ThisSuppliers = TestItem;
+            PrimaryKey = AllSupplieres.Add();
+            TestItem.SupplierId = PrimaryKey;
+            TestItem.SupplierAvailable = false;
+            TestItem.SupplierAddress = "2 manny road";
+            TestItem.SupplierContactNo = 07765654;
+            TestItem.SupplierEmail = "Supplier@email.com";
+            TestItem.SupplierName = "MIK Rescue";
+            AllSupplieres.ThisSuppliers = TestItem;
+            AllSupplieres.Update();
+            AllSupplieres.ThisSuppliers.Find(PrimaryKey);
+            Assert.AreEqual(AllSupplieres.ThisSuppliers, TestItem);
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsSuppliersCollection AllSupplieres = new clsSuppliersCollection();
+            clsSuppliers TestItem = new clsSuppliers();
+            Int32 PrimaryKey = 0;
+            TestItem.SupplierAvailable = true;
+            TestItem.SupplierId = 2;
+            TestItem.SupplierName = "manny and co";
+            TestItem.SupplierEmail = "Supplier2@email.com";
+            TestItem.SupplierContactNo = 07099772331;
+            TestItem.SupplierAddress = "2 manny land";
+            AllSupplieres.ThisSuppliers = TestItem;
+            PrimaryKey = AllSupplieres.Add();
+            TestItem.SupplierId = PrimaryKey;
+            AllSupplieres.ThisSuppliers.Find(PrimaryKey);
+            AllSupplieres.Delete();
+            Boolean Found = AllSupplieres.ThisSuppliers.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }    
+     }
 }
